@@ -12,14 +12,16 @@ public class Main {
     public static void main(String[] args) {
         MainFrame mainFrame = new MainFrame();
         mainFrame.setVisible(true);
-        dataCreate dataCreator = new dataCreate();
-        dataCreator.createGreenDayData(); // Verileri oluştur
-        dataCreator.createSezenAksuData(); // Verileri oluştur
-        dataCreator.createBarisMancoData(); // Verileri oluştur
+        dataCreate DataCreator = new dataCreate();
+        DataCreator.createGreenDayData(); // Verileri oluştur
+        DataCreator.createMetallicaData(); // Verileri oluştur
+        DataCreator.createEminemData(); // Verileri oluştur
+        DataCreator.createArcticMonkeysData(); // Verileri oluştur
+        DataCreator.createNirvanaData(); // Verileri oluştur
 
 
         // Sanatçıları listele
-        for (Artist artist : dataCreator.artists) {
+        for (Artist artist : DataCreator.artists) {
             System.out.println("Sanatçı: " + artist.getArtistName());
             System.out.println("Kuruluş Yılı: " + artist.getFoundingDate());
             System.out.println("Dinleyici Sayısı: " + artist.getListeners());
@@ -47,6 +49,8 @@ public class Main {
                 }
                 System.out.println();
             }
+            System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
         }
 
     }
