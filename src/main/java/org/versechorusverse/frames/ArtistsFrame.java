@@ -19,6 +19,7 @@ import java.util.List;
 public class ArtistsFrame extends JFrame implements ActionListener {
 
     private List<ArtistData> artistDataList = new ArrayList<>();
+    JPanel cardPanel;
 
 
     private JComboBox comboBoxChartType;
@@ -68,7 +69,7 @@ public class ArtistsFrame extends JFrame implements ActionListener {
         sort.setIcon(new ImageIcon(getClass().getResource("/sort.png")));
         sort.addMouseListener(new SortMouseListener(sort, "/sort.png"));
 
-        JPanel cardPanel = new JPanel();
+        cardPanel = new JPanel();
         cardPanel.setLayout(new GridLayout(0, 1, 10, 0));
         cardPanel.setOpaque(false);
 
@@ -77,7 +78,7 @@ public class ArtistsFrame extends JFrame implements ActionListener {
             JPanel artistCard = createArtistCard("ARTIST " + i, i * 1000, i * 10, i + 1990, "/photo/photo" + i + ".jpg");
             cardPanel.add(artistCard);
             // Add artist data to the list for sorting purposes
-            artistDataList.add(new ArtistData("ARTIST " + i, i * 1000, i * 10, i + 1990, "/photo/photo" + i + ".jpg")); // Assume ArtistData has a constructor for these parameters
+            artistDataList.add(new ArtistData(i,"ARTIST " + i, i * 1000, i * 10, i + 1990, "/photo/photo" + i + ".jpg")); // Assume ArtistData has a constructor for these parameters
         }
 
 
@@ -172,20 +173,19 @@ public class ArtistsFrame extends JFrame implements ActionListener {
             return null;
         }
     }
+
     private void refreshArtistCards() {
         cardPanel.removeAll(); // Clear the panel
 
         // Re-add sorted artist cards
         for (ArtistData artist : artistDataList) {
-            JPanel artistCard = createArtistCard(artist.getName(), artist.getListeners(), artist.getSongCount(), artist.getYear(), "/photo/photo" + artist.getId() + ".jpg");
+            JPanel artistCard = createArtistCard(artist.getArtistName(), artist.getListeners(), artist.getSongCount(), artist.getYear(), "/photo/photo" + artist.getId() + ".jpg");
             cardPanel.add(artistCard);
         }
 
         cardPanel.revalidate(); // Refresh the panel to show the new sorted cards
         cardPanel.repaint();
     }
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -197,6 +197,7 @@ public class ArtistsFrame extends JFrame implements ActionListener {
                 case "(Popularity) Least to Greatest":
                 case "(Popularity) Greatest to Least":
                     SelectionSort.sortArtistsByListeners(artistDataList, descending);
+                    refreshArtistCards();
                     break;
 
                 case "(Year) Oldest to Newest":
@@ -207,6 +208,7 @@ public class ArtistsFrame extends JFrame implements ActionListener {
                 case "(Length) Least to Greatest":
                 case "(Length) Greatest to Least":
                     SelectionSort.sortArtistsBySongCount(artistDataList, descending);
+                    refreshArtistCards();
                     break;
 
                 default:
@@ -214,7 +216,7 @@ public class ArtistsFrame extends JFrame implements ActionListener {
             }
 
             // Refresh the artist cards with sorted data
-            refreshArtistCards();
+
         }
     }
 

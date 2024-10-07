@@ -1,18 +1,24 @@
 package org.versechorusverse.data;
 
 public class ArtistData {
+    int id;
     private String artistName;
     private int year;
     private int listeners;
     private int songs;
     private String photoPath;
 
-    public ArtistData(String artistName, int year, int listeners, int songs, String photoPath) {
+    public ArtistData(int id,String artistName, int year, int listeners, int songs, String photoPath) {
+        this.id = id;
         this.artistName = artistName;
         this.year = year;
         this.listeners = listeners;
         this.songs = songs;
         this.photoPath = photoPath;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getArtistName() {
