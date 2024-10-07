@@ -11,8 +11,12 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         MainFrame mainFrame = new MainFrame();
-        mainFrame.setVisible(true);dataCreate dataCreator = new dataCreate();
+        mainFrame.setVisible(true);
+        dataCreate dataCreator = new dataCreate();
         dataCreator.createGreenDayData(); // Verileri oluştur
+        dataCreator.createSezenAksuData(); // Verileri oluştur
+        dataCreator.createBarisMancoData(); // Verileri oluştur
+
 
         // Sanatçıları listele
         for (Artist artist : dataCreator.artists) {
