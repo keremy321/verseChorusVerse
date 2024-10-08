@@ -6,6 +6,7 @@ import org.versechorusverse.datas.Song;
 import org.versechorusverse.datas.dataCreate;
 import org.versechorusverse.frames.MainFrame;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 
 public class Main {
@@ -13,11 +14,16 @@ public class Main {
         MainFrame mainFrame = new MainFrame();
         mainFrame.setVisible(true);
         dataCreate DataCreator = new dataCreate();
+        System.out.println(DataCreator.artists.get(2).getAlbums().stream().count());
+        System.out.println(DataCreator.artists.get(3).getAlbums().stream().count());
+        System.out.println(DataCreator.artists.get(4).getAlbums().stream().count());
+        //artistte framde örnek kod var
+
 
 
 
         // Sanatçıları listele
-        for (Artist artist : DataCreator.artists) {
+       /* for (Artist artist : DataCreator.artists) {
             System.out.println("Sanatçı: " + artist.getArtistName());
             System.out.println("Kuruluş Yılı: " + artist.getFoundingDate());
             System.out.println("Dinleyici Sayısı: " + artist.getListeners());
@@ -47,7 +53,7 @@ public class Main {
             }
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
-        }
+        }*/
 
     }
 }

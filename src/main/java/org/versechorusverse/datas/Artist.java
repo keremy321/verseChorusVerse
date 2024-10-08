@@ -25,6 +25,7 @@ public class Artist {
         this.biography = biography;
         this.albums = albums;
 
+
     }
 
     public int getId() {
