@@ -3,7 +3,7 @@ package org.versechorusverse.datas;
 import java.util.ArrayList;
 import java.util.List;
 
-public class dataCreate {
+public class DataCreate {
 
     // Green Day için albüm ve şarkı listeleri
     List<Song> songs1 = new ArrayList<>(); // Birinci albümün şarkıları
@@ -13,7 +13,7 @@ public class dataCreate {
     List<Song> songs5 = new ArrayList<>(); // Beşinci albümün şarkıları
     List<Album> albumsGreenDay = new ArrayList<>(); // Albümler listesi
 
-    public dataCreate() {
+    public DataCreate() {
 
         createGreenDayData();
         createMetallicaData();
