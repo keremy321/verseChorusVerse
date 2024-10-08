@@ -196,4 +196,58 @@ public class SelectionSort {
         }
         return songs;
     }
+    public static List<Album> sortAlbumByListeners(List<Album> albums, boolean descending) {
+//        List<Album> albums = new ArrayList<>();
+//
+//        for (Album album : artist.getAlbums()) {
+//                albums.add(album);
+//            }
+        int n = albums.size();
+        for (int i = 0; i < n - 1; i++) {
+            int selected = i;
+            for (int j = i + 1; j < n; j++) {
+                if (descending) {
+                    if (albums.get(j).getListeners() > albums.get(selected).getListeners()) {
+                        selected = j;
+                    }
+                } else {
+                    if (albums.get(j).getListeners() < albums.get(selected).getListeners()) {
+                        selected = j;
+                    }
+                }
+            }
+            // Swap
+            Album temp = albums.get(selected);
+            albums.set(selected, albums.get(i));
+            albums.set(i, temp);
+        }
+        return albums;
+    }
+    public static List<Album> sortAlbumByYear(List<Album> albums, boolean descending) {
+//        List<Album> albums = new ArrayList<>();
+//
+//        for (Album album : artist.getAlbums()) {
+//            albums.add(album);
+//        }
+        int n = albums.size();
+        for (int i = 0; i < n - 1; i++) {
+            int selected = i;
+            for (int j = i + 1; j < n; j++) {
+                if (descending) {
+                    if (albums.get(j).getReleaseYear() > albums.get(selected).getReleaseYear()) {
+                        selected = j;
+                    }
+                } else {
+                    if (albums.get(j).getReleaseYear() < albums.get(selected).getReleaseYear()) {
+                        selected = j;
+                    }
+                }
+            }
+            // Swap
+            Album temp = albums.get(selected);
+            albums.set(selected, albums.get(i));
+            albums.set(i, temp);
+        }
+        return albums;
+    }
 }

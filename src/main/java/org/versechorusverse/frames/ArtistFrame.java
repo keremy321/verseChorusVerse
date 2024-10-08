@@ -4,6 +4,7 @@ import org.versechorusverse.datas.Album;
 import org.versechorusverse.datas.Artist;
 import org.versechorusverse.datas.DataCreate;
 import org.versechorusverse.guiCustomizations.*;
+import org.versechorusverse.sort.SelectionSort;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -13,10 +14,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ArtistFrame extends JFrame implements ActionListener {
+public class ArtistFrame extends JFrame {
     DataCreate dataCreate = new DataCreate();
-
+    Artist artist;
+    List<Album> albums = new ArrayList<>();
+    JPanel cardPanel = new JPanel();
     private JComboBox comboBoxChartType;
     JLabel sort;
 
@@ -78,7 +83,6 @@ public class ArtistFrame extends JFrame implements ActionListener {
         String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least","(Year) Oldest to Newest", "(Year) Newest to Oldest"};
         comboBoxChartType = new JComboBox(chartTypes);
         comboBoxChartType.setBounds(468, 341, 300, 32);
-        comboBoxChartType.addActionListener(this);
         comboBoxChartType.setFont(new Font("Arial Black", Font.PLAIN, 15));
         comboBoxChartType.setBackground(new Color(0x109456));
         comboBoxChartType.setForeground(Color.WHITE);
@@ -92,7 +96,6 @@ public class ArtistFrame extends JFrame implements ActionListener {
         sort.setIcon(new ImageIcon(getClass().getResource("/sort.png")));
         sort.addMouseListener(new SortMouseListener(sort, "/sort.png"));
 
-        JPanel cardPanel = new JPanel();
         cardPanel.setLayout(new GridLayout(0, 1, 10, 0));
         cardPanel.setOpaque(false);
 
@@ -142,6 +145,28 @@ public class ArtistFrame extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setResizable(false);
+        comboBoxChartType.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedOption = (String) comboBoxChartType.getSelectedItem();
+                boolean descending = selectedOption.contains("Greatest to Least") || selectedOption.contains("Newest to Oldest");
+
+                switch (selectedOption) {
+                    case "(Popularity) Least to Greatest":
+                    case "(Popularity) Greatest to Least":
+                        albums=SelectionSort.sortAlbumByListeners(artist.getAlbums(), descending);
+                        refreshAlbumCards();
+                        break;
+
+                    case "(Year) Oldest to Newest":
+                    case "(Year) Newest to Oldest":
+                        albums=SelectionSort.sortAlbumByYear(artist.getAlbums(), descending);
+                        refreshAlbumCards();
+                        break;
+                }
+            }
+        });
     }
 
     private JPanel createArtistCard(String artistName, int year ,int listeners, int songs, int length, String photoPath) {
@@ -188,12 +213,25 @@ public class ArtistFrame extends JFrame implements ActionListener {
 
         return panel;
     }
+    public void refreshAlbumCards() {
+        SwingUtilities.invokeLater(() -> {
+            cardPanel.removeAll(); // Mevcut tüm kartları kaldır
+            for (Album album : albums) {  // Sıralanmış albüm listesinden her bir albüm için kart oluştur
+                JPanel artistCard = createArtistCard(
+                        album.getAlbumName(),    // Albüm adı
+                        album.getReleaseYear(),  // Yayınlanma yılı
+                        album.getListeners(),    // Dinlenme sayısı
+                        album.getSongs(),        // Şarkı sayısı
+                        album.getLength(),       // Albüm uzunluğu
+                        album.getCoverPhotoPath()// Kapak fotoğrafı yolu
+                );
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
+                cardPanel.add(artistCard); // Yeni kartı panele ekle
+            }
+            cardPanel.revalidate();  // Paneli yeniden düzenle
+            cardPanel.repaint();     // Paneli yeniden çizdir
+        });
     }
-
     private ImageIcon loadImageIcon(String path) {
         try {
             URL imgURL = getClass().getResource(path);
