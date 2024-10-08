@@ -49,7 +49,8 @@ public class ModernScrollBarUI extends BasicScrollBarUI {
 
     @Override
     public Dimension getPreferredSize(JComponent c) {
-        // Set the preferred size of the scrollbar
-        return new Dimension(8, 0); // Set the desired width for the scrollbar thumb
+        // Set a fixed width for the vertical scrollbar, ensuring it remains constant
+        return new Dimension(8, 0); // 8 pixels wide for vertical scrollbars
     }
+
 }

@@ -19,6 +19,7 @@ public class ArtistFrame extends JFrame implements ActionListener {
     JLabel sort;
 
     public ArtistFrame() {
+
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(0, 0, 1016, 839);
 
@@ -48,7 +49,7 @@ public class ArtistFrame extends JFrame implements ActionListener {
         JLabel labelPhoto = new JLabel();
         labelPhoto.setBounds(75, 117, 200, 200);
 
-        ImageIcon artistPhoto = loadImageIcon("/photo/photo1.jpg");
+        ImageIcon artistPhoto = loadImageIcon("/artistPhoto/greenday.jpg");
         if (artistPhoto != null) {
             Image img = artistPhoto.getImage();
             Image scaledImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
@@ -93,8 +94,8 @@ public class ArtistFrame extends JFrame implements ActionListener {
         cardPanel.setLayout(new GridLayout(0, 1, 10, 0));
         cardPanel.setOpaque(false);
 
-        for (int i = 0; i <= 5; i++) {
-            JPanel artistCard = createArtistCard(dataCreate.artists.get(i).getAlbums().get(i).getAlbumName(), i + 2000 ,i * 1000, i * 10, i+40 ,"/photo/photo" + i + ".jpg"); // Update the path for each artist photo
+        for (int i = 0; i < 5; i++) {
+            JPanel artistCard = createArtistCard(dataCreate.artists.get(i).getAlbums().get(i).getAlbumName(), dataCreate.artists.get(i).getAlbums().get(i).getReleaseYear() ,dataCreate.artists.get(i).getAlbums().get(i).getListeners(), dataCreate.artists.get(i).getAlbums().get(i).getSongs(), dataCreate.artists.get(i).getAlbums().get(i).getLength() ,dataCreate.artists.get(i).getAlbums().get(i).getCoverPhotoPath());
             cardPanel.add(artistCard);
         }
 

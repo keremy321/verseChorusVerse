@@ -1,5 +1,7 @@
 package org.versechorusverse.frames;
 
+import org.versechorusverse.datas.Album;
+import org.versechorusverse.datas.Artist;
 import org.versechorusverse.datas.DataCreate;
 import org.versechorusverse.guiCustomizations.*;
 
@@ -67,10 +69,18 @@ public class AlbumsFrame extends JFrame implements ActionListener {
         cardPanel.setLayout(new GridLayout(0, 1, 10, 0));
         cardPanel.setOpaque(false);
 
-        // Add sample artist cards with photos
-        for (int i = 1; i <= 10; i++) {
-            JPanel artistCard = createArtistCard(dataCreate.artists.get(i).getAlbums().get(i).getAlbumName(), i + 2000 ,i * 1000, i * 10, i+40 ,"/photo/photo" + i + ".jpg"); // Update the path for each artist photo
-            cardPanel.add(artistCard);
+        for (Artist artist : dataCreate.artists) {  // Loop through each artist
+            for (Album album : artist.getAlbums()) {  // Loop through each album of the artist
+                JPanel artistCard = createArtistCard(
+                        album.getAlbumName(),                 // Pass the artist's name
+                        album.getReleaseYear(),           // Pass the album's release year
+                        album.getListeners(),             // Pass the album's listeners count
+                        album.getSongs(),          // Pass the number of songs in the album
+                        album.getLength(),                // Pass the album's length
+                        album.getCoverPhotoPath()         // Pass the path to the album cover photo
+                );
+                cardPanel.add(artistCard);            // Add the card to the card panel
+            }
         }
 
         JScrollPane scrollPane = new JScrollPane(cardPanel);
@@ -129,9 +139,14 @@ public class AlbumsFrame extends JFrame implements ActionListener {
             photoLabel.setHorizontalAlignment(JLabel.CENTER);
         }
 
-        JLabel nameLabel = new JLabel(artistName);
+        String truncatedName = truncateText(artistName, 20); // Set a limit, e.g., 20 characters
+
+        JLabel nameLabel = new JLabel(truncatedName);
         nameLabel.setFont(new Font("Roboto Black", Font.BOLD, 20));
         nameLabel.setForeground(Color.WHITE);
+        nameLabel.setPreferredSize(new Dimension(200, 30));  // Set a constant width for the name label
+        nameLabel.setHorizontalAlignment(JLabel.LEFT);
+
         JLabel yearLabel = new JLabel("Released in " + year);
         yearLabel.setForeground(Color.WHITE);
         JLabel listenersLabel = new JLabel(listeners + " plays");
@@ -168,8 +183,16 @@ public class AlbumsFrame extends JFrame implements ActionListener {
         }
     }
 
+    private String truncateText(String text, int maxLength) {
+        if (text.length() <= maxLength) {
+            return text;
+        }
+        return text.substring(0, maxLength) + "...";
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
     }
 }
+

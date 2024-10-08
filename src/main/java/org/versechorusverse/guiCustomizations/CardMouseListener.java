@@ -13,6 +13,7 @@ public class CardMouseListener implements MouseListener {
     private JPanel panel;
     private JFrame currentFrame;
     private String key;
+
     public CardMouseListener(JPanel panel, JFrame currentFrame, String key) {
         this.panel = panel;
         this.currentFrame = currentFrame;
@@ -23,6 +24,7 @@ public class CardMouseListener implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         switch (key) {
             case "artist":
+
                 ArtistFrame artistFrame = new ArtistFrame();
                 currentFrame.dispose();
                 break;

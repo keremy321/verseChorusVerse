@@ -71,7 +71,7 @@ public class ArtistsFrame extends JFrame implements ActionListener {
 
         // Add sample artist cards with photos
         for (int i = 0; i < 5; i++) {
-            JPanel artistCard = createArtistCard(dataCreate.artists.get(i).getArtistName(), dataCreate.artists.get(i).getListeners(), dataCreate.artists.get(i).getSongs(), dataCreate.artists.get(i).getYear(), "/photo/photo" + i + ".jpg");
+            JPanel artistCard = createArtistCard(dataCreate.artists.get(i).getArtistName(), dataCreate.artists.get(i).getListeners(), dataCreate.artists.get(i).getSongs(), dataCreate.artists.get(i).getYear(), dataCreate.artists.get(i).getPhotoPath());
             cardPanel.add(artistCard);
         }
 

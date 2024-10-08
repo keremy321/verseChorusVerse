@@ -3,7 +3,7 @@ package org.versechorusverse;
 import org.versechorusverse.datas.Album;
 import org.versechorusverse.datas.Artist;
 import org.versechorusverse.datas.Song;
-import org.versechorusverse.datas.dataCreate;
+import org.versechorusverse.datas.DataCreate;
 import org.versechorusverse.frames.MainFrame;
 
 import javax.xml.crypto.Data;
@@ -12,13 +12,13 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         MainFrame mainFrame = new MainFrame();
-        mainFrame.setVisible(true);
-        dataCreate DataCreator = new dataCreate();
-        System.out.println(DataCreator.artists.get(2).getAlbums().stream().count());
-        System.out.println(DataCreator.artists.get(3).getAlbums().stream().count());
-        System.out.println(DataCreator.artists.get(4).getAlbums().stream().count());
-        //artistte framde örnek kod var
-
+//        mainFrame.setVisible(true);
+//        dataCreate DataCreator = new dataCreate();
+//        System.out.println(DataCreator.artists.get(2).getAlbums().stream().count());
+//        System.out.println(DataCreator.artists.get(3).getAlbums().stream().count());
+//        System.out.println(DataCreator.artists.get(4).getAlbums().stream().count());
+//        //artistte framde örnek kod var
+//
 
 
 

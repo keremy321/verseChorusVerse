@@ -46,7 +46,7 @@ public class AlbumFrame extends JFrame implements ActionListener {
         JLabel labelPhoto = new JLabel();
         labelPhoto.setBounds(75, 117, 200, 200);
 
-        ImageIcon artistPhoto = loadImageIcon("/photo/photo1.jpg");
+        ImageIcon artistPhoto = loadImageIcon("/artistPhoto/greenday.jpg");
         if (artistPhoto != null) {
             Image img = artistPhoto.getImage();
             Image scaledImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
