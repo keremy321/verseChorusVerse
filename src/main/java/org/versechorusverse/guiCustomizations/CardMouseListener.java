@@ -18,7 +18,7 @@ public class CardMouseListener implements MouseListener {
     private String key;
     private Artist artist;
 
-    public CardMouseListener(JPanel panel, JFrame currentFrame, String key, Artist artist, Album album, Song song) {
+    public CardMouseListener(JPanel panel, JFrame currentFrame, String key, Artist artist) {
         this.panel = panel;
         this.currentFrame = currentFrame;
         this.key = key;
