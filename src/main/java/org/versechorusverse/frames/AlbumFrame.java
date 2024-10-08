@@ -4,6 +4,7 @@ import org.versechorusverse.datas.Album;
 import org.versechorusverse.datas.Artist;
 import org.versechorusverse.datas.Song;
 import org.versechorusverse.guiCustomizations.*;
+import org.versechorusverse.sort.SelectionSort;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -13,9 +14,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class AlbumFrame extends JFrame implements ActionListener {
-
+public class AlbumFrame extends JFrame {
+    List<Song> songs=new ArrayList<>();
+    JPanel cardPanel = new JPanel();
     private JComboBox comboBoxChartType;
     private JLabel sort;
 
@@ -82,7 +86,6 @@ public class AlbumFrame extends JFrame implements ActionListener {
         String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least", "(Length) Least to Greatest", "(Length) Greatest to Least"};
         comboBoxChartType = new JComboBox(chartTypes);
         comboBoxChartType.setBounds(468, 341, 300, 32);
-        comboBoxChartType.addActionListener(this);
         comboBoxChartType.setFont(new Font("Arial Black", Font.PLAIN, 15));
         comboBoxChartType.setBackground(new Color(0x109456));
         comboBoxChartType.setForeground(Color.WHITE);
@@ -96,7 +99,6 @@ public class AlbumFrame extends JFrame implements ActionListener {
         sort.setIcon(new ImageIcon(getClass().getResource("/sort.png")));
         sort.addMouseListener(new SortMouseListener(sort, "/sort.png"));
 
-        JPanel cardPanel = new JPanel();
         cardPanel.setLayout(new GridLayout(0, 1, 10, 0));
         cardPanel.setOpaque(false);
 
@@ -150,6 +152,24 @@ public class AlbumFrame extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setResizable(false);
+        comboBoxChartType.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedOption = (String) comboBoxChartType.getSelectedItem();
+                boolean descending = selectedOption.contains("Greatest to Least");
+                switch (selectedOption) {
+                    case "(Popularity) Least to Greatest":
+                    case "(Popularity) Greatest to Least":
+                        songs= SelectionSort.sortSongByListeners(album.getSong(), descending);
+                        refreshSongCards();
+                        break;
+                    case "(Length) Least to Greatest":
+                    case "(Length) Greatest to Least":
+                        songs= SelectionSort.sortSongByLength(album.getSong(),descending);
+                        refreshSongCards();
+                }
+            }
+        });
     }
 
     private JPanel createArtistCard(String artistName, int listeners, int lenght, int year, String photoPath) {
@@ -195,9 +215,17 @@ public class AlbumFrame extends JFrame implements ActionListener {
         return panel;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
+    public void refreshSongCards() {
+        SwingUtilities.invokeLater(() -> {
+            cardPanel.removeAll(); // Mevcut tüm kartları kaldır
+            for (Song song : songs) {  // Sıralanmış albüm listesinden her bir albüm için kart oluştur
+                String name = song.getSongName();
+                JPanel artistCard = createArtistCard(name, song.getListeners(), song.getLength(), song.getReleaseYear(), song.getCoverPhotoPath());
+                cardPanel.add(artistCard); // Yeni kartı panele ekle
+            }
+            cardPanel.revalidate();  // Paneli yeniden düzenle
+            cardPanel.repaint();     // Paneli yeniden çizdir
+        });
     }
 
     private ImageIcon loadImageIcon(String path) {

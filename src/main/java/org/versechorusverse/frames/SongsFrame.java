@@ -197,8 +197,6 @@ public class SongsFrame extends JFrame implements ActionListener {
                     songs= SelectionSort.sortSongsByLength(artists,descending);
                     refreshSongCards();
             }
-
-
         }
     }
 
