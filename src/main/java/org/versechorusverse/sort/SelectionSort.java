@@ -6,6 +6,7 @@ import org.versechorusverse.data.AlbumData;
 import org.versechorusverse.datas.Album;
 import org.versechorusverse.datas.Artist;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SelectionSort {
@@ -76,68 +77,61 @@ public class SelectionSort {
         }
     }
 
-    public static void sortAlbumsByListeners(List<AlbumData> dataList, boolean descending) {
-        int n = dataList.size();
+    public static List<Album> sortAlbumsByListeners(List<Artist> artists, boolean descending) {
+        List<Album> albums = new ArrayList<>();
+        for(Artist artist : artists) {
+            for(Album album : artist.getAlbums()) {
+                albums.add(album);
+            }
+        }
+        int n = albums.size();
         for (int i = 0; i < n - 1; i++) {
             int selected = i;
             for (int j = i + 1; j < n; j++) {
                 if (descending) {
-                    if (dataList.get(j).getListeners() > dataList.get(selected).getListeners()) {
+                    if (albums.get(j).getListeners() > albums.get(selected).getListeners()) {
                         selected = j;
                     }
                 } else {
-                    if (dataList.get(j).getListeners() < dataList.get(selected).getListeners()) {
+                    if (albums.get(j).getListeners() < albums.get(selected).getListeners()) {
                         selected = j;
                     }
                 }
             }
             // Swap
-            AlbumData temp = dataList.get(selected);
-            dataList.set(selected, dataList.get(i));
-            dataList.set(i, temp);
+            Album temp = albums.get(selected);
+            albums.set(selected, albums.get(i));
+            albums.set(i, temp);
         }
+        return albums;
     }
 
-    public static void sortAlbumsBySongCount(List<AlbumData> dataList, boolean descending) {
-        int n = dataList.size();
+    public static List<Album> sortAlbumsByYear(List<Artist> artists, boolean descending) {
+        List<Album> albums = new ArrayList<>();
+        for(Artist artist : artists) {
+            for(Album album : artist.getAlbums()) {
+                albums.add(album);
+            }
+        }
+        int n = albums.size();
         for (int i = 0; i < n - 1; i++) {
             int selected = i;
             for (int j = i + 1; j < n; j++) {
                 if (descending) {
-                    if (dataList.get(j).getSongCount() > dataList.get(selected).getSongCount()) {
+                    if (albums.get(j).getReleaseYear() > albums.get(selected).getReleaseYear()) {
                         selected = j;
                     }
                 } else {
-                    if (dataList.get(j).getSongCount() < dataList.get(selected).getSongCount()) {
+                    if (albums.get(j).getReleaseYear() < albums.get(selected).getReleaseYear()) {
                         selected = j;
                     }
                 }
             }
-            AlbumData temp = dataList.get(selected);
-            dataList.set(selected, dataList.get(i));
-            dataList.set(i, temp);
+            Album temp = albums.get(selected);
+            albums.set(selected, albums.get(i));
+            albums.set(i, temp);
         }
-    }
-
-    public static void sortAlbumsByYear(List<AlbumData> dataList, boolean descending) {
-        int n = dataList.size();
-        for (int i = 0; i < n - 1; i++) {
-            int selected = i;
-            for (int j = i + 1; j < n; j++) {
-                if (descending) {
-                    if (dataList.get(j).getReleaseYear() > dataList.get(selected).getReleaseYear()) {
-                        selected = j;
-                    }
-                } else {
-                    if (dataList.get(j).getReleaseYear() < dataList.get(selected).getReleaseYear()) {
-                        selected = j;
-                    }
-                }
-            }
-            AlbumData temp = dataList.get(selected);
-            dataList.set(selected, dataList.get(i));
-            dataList.set(i, temp);
-        }
+        return albums;
     }
 
     public static void sortSongsByListeners(List<SongData> dataList, boolean descending) {
