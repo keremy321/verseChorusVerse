@@ -1,5 +1,4 @@
 package org.versechorusverse.sort;
-
 import org.versechorusverse.datas.Album;
 import org.versechorusverse.datas.Artist;
 import org.versechorusverse.datas.Song;
@@ -194,11 +193,6 @@ public class SelectionSort {
         return songs;
     }
     public static List<Album> sortAlbumByListeners(List<Album> albums, boolean descending) {
-//        List<Album> albums = new ArrayList<>();
-//
-//        for (Album album : artist.getAlbums()) {
-//                albums.add(album);
-//            }
         int n = albums.size();
         for (int i = 0; i < n - 1; i++) {
             int selected = i;
@@ -221,11 +215,6 @@ public class SelectionSort {
         return albums;
     }
     public static List<Album> sortAlbumByYear(List<Album> albums, boolean descending) {
-//        List<Album> albums = new ArrayList<>();
-//
-//        for (Album album : artist.getAlbums()) {
-//            albums.add(album);
-//        }
         int n = albums.size();
         for (int i = 0; i < n - 1; i++) {
             int selected = i;
@@ -246,5 +235,49 @@ public class SelectionSort {
             albums.set(i, temp);
         }
         return albums;
+    }
+    public static List<Song> sortSongByListeners(List<Song> songs, boolean descending) {
+        int n = songs.size();
+        for (int i = 0; i < n - 1; i++) {
+            int selected = i;
+            for (int j = i + 1; j < n; j++) {
+                if (descending) {
+                    if (songs.get(j).getListeners() > songs.get(selected).getListeners()) {
+                        selected = j;
+                    }
+                } else {
+                    if (songs.get(j).getListeners() < songs.get(selected).getListeners()) {
+                        selected = j;
+                    }
+                }
+            }
+            // Swap
+            Song temp = songs.get(selected);
+            songs.set(selected, songs.get(i));
+            songs.set(i, temp);
+        }
+        return songs;
+    }
+    public static List<Song> sortSongByLength(List<Song> songs, boolean descending) {
+        int n = songs.size();
+        for (int i = 0; i < n - 1; i++) {
+            int selected = i;
+            for (int j = i + 1; j < n; j++) {
+                if (descending) {
+                    if (songs.get(j).getLength() > songs.get(selected).getLength()) {
+                        selected = j;
+                    }
+                } else {
+                    if (songs.get(j).getLength() < songs.get(selected).getLength()) {
+                        selected = j;
+                    }
+                }
+            }
+            // Swap
+            Song temp = songs.get(selected);
+            songs.set(selected, songs.get(i));
+            songs.set(i, temp);
+        }
+        return songs;
     }
 }
