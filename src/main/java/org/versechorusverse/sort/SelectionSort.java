@@ -23,7 +23,6 @@ public class SelectionSort {
                     }
                 }
             }
-            // Swap
             ArtistData temp = dataList.get(selected);
             dataList.set(selected, dataList.get(i));
             dataList.set(i, temp);
