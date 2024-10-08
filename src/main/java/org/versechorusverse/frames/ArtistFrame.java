@@ -1,5 +1,6 @@
 package org.versechorusverse.frames;
 
+import org.versechorusverse.datas.Album;
 import org.versechorusverse.datas.Artist;
 import org.versechorusverse.datas.DataCreate;
 import org.versechorusverse.guiCustomizations.*;
@@ -18,7 +19,6 @@ public class ArtistFrame extends JFrame implements ActionListener {
 
     private JComboBox comboBoxChartType;
     JLabel sort;
-    Artist artist;
 
     public ArtistFrame(Artist artist) {
 
@@ -62,14 +62,14 @@ public class ArtistFrame extends JFrame implements ActionListener {
         }
 
         JLabel artistName = new JLabel();
-        artistName.setText("ARTIST NAME");
+        artistName.setText(artist.getArtistName());
         artistName.setBounds(317, 117, 760, 53);
         artistName.setFont(new Font("Akira Expanded", Font.PLAIN, 40));
         artistName.setForeground(Color.WHITE);
 
         JLabel labelBio = new JLabel();
         labelBio.setBounds(317, 184, 608, 135);
-        labelBio.setText("<html>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </html>");
+        labelBio.setText(artist.getBiography());
         labelBio.setFont(new Font("Roboto Light", Font.PLAIN, 15));
         labelBio.setForeground(Color.WHITE);
         labelBio.setHorizontalAlignment(SwingConstants.LEFT);
@@ -97,7 +97,14 @@ public class ArtistFrame extends JFrame implements ActionListener {
         cardPanel.setOpaque(false);
 
         for (int i = 0; i < artist.getAlbums().size(); i++) {
-            JPanel artistCard = createArtistCard(artist.getAlbums().get(i).getAlbumName(), artist.getAlbums().get(i).getReleaseYear() ,artist.getAlbums().get(i).getListeners(), artist.getAlbums().get(i).getSongs(), artist.getAlbums().get(i).getLength() ,artist.getAlbums().get(i).getCoverPhotoPath());
+            Album album = artist.getAlbums().get(i);
+            JPanel artistCard = createArtistCard(album.getAlbumName(), album.getReleaseYear() ,album.getListeners(), album.getSongs(), album.getLength() ,album.getCoverPhotoPath());
+
+
+            artistCard.setName(album.getAlbumName());
+
+            artistCard.addMouseListener(new CardMouseListener(artistCard, this, "album", artist, album));
+
             cardPanel.add(artistCard);
         }
 

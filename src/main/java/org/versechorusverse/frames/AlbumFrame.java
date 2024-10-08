@@ -2,6 +2,7 @@ package org.versechorusverse.frames;
 
 import org.versechorusverse.datas.Album;
 import org.versechorusverse.datas.Artist;
+import org.versechorusverse.datas.Song;
 import org.versechorusverse.guiCustomizations.*;
 
 import javax.swing.*;
@@ -14,8 +15,6 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 
 public class AlbumFrame extends JFrame implements ActionListener {
-    private Artist artist;
-    private Album album;
 
     private JComboBox comboBoxChartType;
     private JLabel sort;
@@ -101,9 +100,17 @@ public class AlbumFrame extends JFrame implements ActionListener {
         cardPanel.setLayout(new GridLayout(0, 1, 10, 0));
         cardPanel.setOpaque(false);
 
-        for (int i = 1; i <= 10; i++) {
-            JPanel artistCard = createArtistCard("SONG " + i, i * 1000, i, i + 2000 ,"/photo/photo" + i + ".jpg"); // Update the path for each artist photo
+        for (int i = 0; i < album.getSong().size(); i++) {
+            Song song = album.getSong().get(i);
+            JPanel artistCard = createArtistCard(song.getSongName(), song.getListeners(), song.getLength(), song.getReleaseYear() , song.getCoverPhotoPath()); // Update the path for each artist photo
             cardPanel.add(artistCard);
+
+            artistCard.setName(album.getAlbumName());
+
+            artistCard.addMouseListener(new CardMouseListener(artistCard, this, "song", artist, album, song));
+
+            cardPanel.add(artistCard);            // Add the card to the card panel
+
         }
 
         JScrollPane scrollPane = new JScrollPane(cardPanel);

@@ -13,9 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LyricsFrame extends JFrame implements ActionListener {
-    private Artist artist;
-    private Album album;
-    private Song song;
 
     public LyricsFrame(Artist artist, Album album, Song song) {
         JLayeredPane layeredPane = new JLayeredPane();
@@ -45,67 +42,14 @@ public class LyricsFrame extends JFrame implements ActionListener {
         labelSongs.addMouseListener(new MenuMouseListener(labelSongs, "/words/songsWhite.png", "songs", this));
 
         JLabel songName = new JLabel();
-        songName.setText("SONG NAME");
+        songName.setText(song.getSongName());
         songName.setBounds(0, 61, 1000, 98);
         songName.setFont(new Font("Akira Expanded", Font.PLAIN, 40));
         songName.setForeground(new Color(0x8c67bb));
         songName.setHorizontalAlignment(SwingConstants.CENTER);
 
         JLabel lyricsLabel = new JLabel();
-        lyricsLabel.setText("<html><div style='text-align: center;'>Do you know what's worth fighting for<br>\n" +
-                "When it's not worth dying for?<br>\n" +
-                "Does it take your breath away<br>\n" +
-                "And you feel yourself suffocating<br>\n" +
-                "Does the pain weigh out the pride?<br>\n" +
-                "And you look for a place to hide<br>\n" +
-                "Did someone break your heart inside<br>\n" +
-                "You're in ruins<br><br>\n" +
-                "\n" +
-                "One, 21 Guns<br>\n" +
-                "Lay down your arms<br>\n" +
-                "Give up the fight<br>\n" +
-                "One, 21 Guns<br>\n" +
-                "Throw up your arms into the sky<br>\n" +
-                "You and I<br><br>\n" +
-                "\n" +
-                "When you're at the end of the road<br>\n" +
-                "And you lost all sense of control<br>\n" +
-                "And your thoughts have taken their toll<br>\n" +
-                "When your mind breaks the spirit of your soul<br>\n" +
-                "Your faith walks on broken glass<br>\n" +
-                "And the hangover doesn't pass<br>\n" +
-                "Nothing's ever built to last<br>\n" +
-                "You're in ruins<br><br>\n" +
-                "\n" +
-                "One, 21 Guns<br>\n" +
-                "Lay down your arms<br>\n" +
-                "Give up the fight<br>\n" +
-                "One, 21 Guns<br>\n" +
-                "Throw up your arms into the sky<br>\n" +
-                "You and I<br><br>\n" +
-                "\n" +
-                "Did you try to live on your own<br>\n" +
-                "When you burned down the house and home?<br>\n" +
-                "Did you stand too close to the fire<br>\n" +
-                "Like a liar looking for forgiveness from a stone?<br><br>\n" +
-                "\n" +
-                "When it's time to live and let die<br>\n" +
-                "And you can't get another try<br>\n" +
-                "Something inside this heart has died<br>\n" +
-                "You're in ruins<br><br>\n" +
-                "\n" +
-                "One, 21 Guns<br>\n" +
-                "Lay down your arms<br>\n" +
-                "Give up the fight<br>\n" +
-                "One, 21 Guns<br>\n" +
-                "Throw up your arms into the sky<br>\n" +
-                "One, 21 Guns<br>\n" +
-                "Lay down your arms<br>\n" +
-                "Give up the fight<br>\n" +
-                "One, 21 Guns<br>\n" +
-                "Throw up your arms into the sky<br><br>\n" +
-                "\n" +
-                "You and I</div></html>");
+        lyricsLabel.setText("<html>" + song.getLyrics().replace("\n", "<br>") + "</html>");
         lyricsLabel.setFont(new Font("Franklin Gothic Heavy", Font.BOLD, 30)); // Updated font size for better visibility
         lyricsLabel.setForeground(new Color(0xFFE8E8E8, true));
         lyricsLabel.setHorizontalAlignment(SwingConstants.CENTER); // Center horizontally

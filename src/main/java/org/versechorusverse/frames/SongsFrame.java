@@ -69,10 +69,17 @@ public class SongsFrame extends JFrame implements ActionListener {
         cardPanel.setLayout(new GridLayout(0, 1, 10, 0));
         cardPanel.setOpaque(false);
 
-        for (Artist artist : dataCreate.artists) {  // Loop through each artist
-            for (Album album : artist.getAlbums()) {  // Loop through each album of the artist
-                for (Song song : album.getSong()) {  // Loop through each song of the album
-                    cardPanel.add(createArtistCard(song.getSongName(), song.getListeners(), song.getLength(), song.getReleaseYear(), song.getCoverPhotoPath()));
+        for (Artist artist : dataCreate.artists) {
+            for (Album album : artist.getAlbums()) {
+                for (Song song : album.getSong()) {
+                    String name = song.getSongName();
+                    JPanel artistCard = createArtistCard("a", song.getListeners(), song.getLength(), song.getReleaseYear(), song.getCoverPhotoPath());
+
+                    artistCard.setName(song.getSongName());
+
+                    artistCard.addMouseListener(new CardMouseListener(artistCard, this, "song", artist, album, song));
+
+                    cardPanel.add(artistCard);
                 }
             }
         }
@@ -173,4 +180,8 @@ public class SongsFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
     }
+
+
 }
+
+

@@ -189,36 +189,44 @@ public class ArtistsFrame extends JFrame implements ActionListener {
             switch (selectedOption) {
                 case "(Popularity) Least to Greatest":
                 case "(Popularity) Greatest to Least":
-                    SelectionSort.sortArtistsByListeners(artists,descending);
-                    for (Artist artist : artists) {
-                        System.out.println(artist.getArtistName());
-                    }
+                    SelectionSort.sortArtistsByListeners(artists, descending);
                     break;
 
                 case "(Year) Oldest to Newest":
                 case "(Year) Newest to Oldest":
                     SelectionSort.sortArtistsByYear(artists, descending);
-                    for (Artist artist : artists) {
-                        System.out.println(artist.getArtistName());
-                    }
                     break;
 
                 case "(Length) Least to Greatest":
                 case "(Length) Greatest to Least":
                     SelectionSort.sortArtistsBySongCount(artists, descending);
-                    for (Artist artist : artists) {
-                        System.out.println(artist.getArtistName());
-                    }
                     break;
 
                 default:
                     break;
             }
 
-            // Refresh the artist cards with sorted data
-
+            refreshArtistCards();
         }
     }
+
+    private void refreshArtistCards() {
+        SwingUtilities.invokeLater(() -> {
+            cardPanel.removeAll();
+
+            for (Artist artist : artists) {
+                JPanel artistCard = createArtistCard(artist.getArtistName(), artist.getListeners(), artist.getSongs(), artist.getYear(), artist.getPhotoPath());
+                artistCard.setName(artist.getArtistName());
+                artistCard.addMouseListener(new CardMouseListener(artistCard, this, "artist", artist));
+                cardPanel.add(artistCard);
+            }
+
+            cardPanel.revalidate();
+            cardPanel.repaint();
+        });
+    }
+
+
 
 
 }
