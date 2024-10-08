@@ -1,5 +1,6 @@
 package org.versechorusverse.frames;
 
+import org.versechorusverse.datas.Artist;
 import org.versechorusverse.datas.DataCreate;
 import org.versechorusverse.guiCustomizations.*;
 
@@ -17,8 +18,9 @@ public class ArtistFrame extends JFrame implements ActionListener {
 
     private JComboBox comboBoxChartType;
     JLabel sort;
+    Artist artist;
 
-    public ArtistFrame() {
+    public ArtistFrame(Artist artist) {
 
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(0, 0, 1016, 839);
@@ -94,8 +96,8 @@ public class ArtistFrame extends JFrame implements ActionListener {
         cardPanel.setLayout(new GridLayout(0, 1, 10, 0));
         cardPanel.setOpaque(false);
 
-        for (int i = 0; i < 5; i++) {
-            JPanel artistCard = createArtistCard(dataCreate.artists.get(i).getAlbums().get(i).getAlbumName(), dataCreate.artists.get(i).getAlbums().get(i).getReleaseYear() ,dataCreate.artists.get(i).getAlbums().get(i).getListeners(), dataCreate.artists.get(i).getAlbums().get(i).getSongs(), dataCreate.artists.get(i).getAlbums().get(i).getLength() ,dataCreate.artists.get(i).getAlbums().get(i).getCoverPhotoPath());
+        for (int i = 0; i < artist.getAlbums().size(); i++) {
+            JPanel artistCard = createArtistCard(artist.getAlbums().get(i).getAlbumName(), artist.getAlbums().get(i).getReleaseYear() ,artist.getAlbums().get(i).getListeners(), artist.getAlbums().get(i).getSongs(), artist.getAlbums().get(i).getLength() ,artist.getAlbums().get(i).getCoverPhotoPath());
             cardPanel.add(artistCard);
         }
 
@@ -177,7 +179,7 @@ public class ArtistFrame extends JFrame implements ActionListener {
         panel.add(lengthLabel);
         panel.add(yearLabel);
 
-        panel.addMouseListener(new CardMouseListener(panel, this, "album"));
+//        panel.addMouseListener(new CardMouseListener(panel, this, "album"));
 
         return panel;
     }

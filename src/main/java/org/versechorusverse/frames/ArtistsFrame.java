@@ -1,5 +1,6 @@
 package org.versechorusverse.frames;
 
+import org.versechorusverse.datas.Artist;
 import org.versechorusverse.datas.DataCreate;
 import org.versechorusverse.guiCustomizations.*;
 
@@ -70,8 +71,16 @@ public class ArtistsFrame extends JFrame implements ActionListener {
         cardPanel.setOpaque(false);
 
         // Add sample artist cards with photos
-        for (int i = 0; i < 5; i++) {
-            JPanel artistCard = createArtistCard(dataCreate.artists.get(i).getArtistName(), dataCreate.artists.get(i).getListeners(), dataCreate.artists.get(i).getSongs(), dataCreate.artists.get(i).getYear(), dataCreate.artists.get(i).getPhotoPath());
+        for (int i = 0; i < dataCreate.artists.size(); i++) {
+            Artist artist = dataCreate.artists.get(i);
+            JPanel artistCard = createArtistCard(artist.getArtistName(), artist.getListeners(), artist.getSongs(), artist.getYear(), artist.getPhotoPath());
+
+            // Set the name of the card to the artist's name
+            artistCard.setName(artist.getArtistName());
+
+            // Pass the artist object to the CardMouseListener
+            artistCard.addMouseListener(new CardMouseListener(artistCard, this, "artist", artist));
+
             cardPanel.add(artistCard);
         }
 
@@ -148,7 +157,7 @@ public class ArtistsFrame extends JFrame implements ActionListener {
         panel.add(songsLabel);
         panel.add(foundedLabel);
 
-        panel.addMouseListener(new CardMouseListener(panel, this, "artist"));
+//        panel.addMouseListener(new CardMouseListener(panel, this, "artist"));
 
         return panel;
     }

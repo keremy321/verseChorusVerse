@@ -163,7 +163,7 @@ public class AlbumsFrame extends JFrame implements ActionListener {
         panel.add(lengthLabel);
         panel.add(yearLabel);
 
-        panel.addMouseListener(new CardMouseListener(panel, this, "album"));
+//        panel.addMouseListener(new CardMouseListener(panel, this, "album"));
 
         return panel;
     }

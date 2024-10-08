@@ -149,7 +149,7 @@ public class SongsFrame extends JFrame implements ActionListener {
         panel.add(lenghtLabel);
         panel.add(yearLabel);
 
-        panel.addMouseListener(new CardMouseListener(panel, this, "song"));
+//        panel.addMouseListener(new CardMouseListener(panel, this, "song"));
 
         return panel;
     }
