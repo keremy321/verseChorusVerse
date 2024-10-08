@@ -290,7 +290,7 @@ public class DataCreate {
         // Green Day Sanatçısı
 
         Artist greenDay = new Artist(1, "Green Day", 1987, 1000000000, 5,
-                "/artistPhoto/greenDay.jpg", "1987",
+                "/artistPhoto/greenday.jpg", "1987",
                 "Green Day is an American rock band formed in 1986 in Berkeley, California, featuring lead vocalist Billie Joe Armstrong, bassist Mike Dirnt, and drummer Tré Cool. They gained fame with their 1994 album Dookie, which sold over 10 million copies and won a Grammy Award. Known for their catchy melodies and punk influences, the band has produced several acclaimed albums, including American Idiot (2004). Inducted into the Rock and Roll Hall of Fame in 2015, Green Day remains a major force in rock music.\n" +
                         "\n" +
                         "\n" +
