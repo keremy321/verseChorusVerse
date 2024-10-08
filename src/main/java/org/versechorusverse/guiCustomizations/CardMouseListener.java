@@ -17,12 +17,31 @@ public class CardMouseListener implements MouseListener {
     private JFrame currentFrame;
     private String key;
     private Artist artist;
+    private Album album;
+    private Song song;
 
     public CardMouseListener(JPanel panel, JFrame currentFrame, String key, Artist artist) {
         this.panel = panel;
         this.currentFrame = currentFrame;
         this.key = key;
         this.artist = artist;
+    }
+
+    public CardMouseListener(JPanel panel, JFrame currentFrame, String key, Artist artist, Album album) {
+        this.panel = panel;
+        this.currentFrame = currentFrame;
+        this.key = key;
+        this.artist = artist;
+        this.album = album;
+    }
+
+    public CardMouseListener(JPanel panel, JFrame currentFrame, String key, Artist artist, Album album, Song song) {
+        this.panel = panel;
+        this.currentFrame = currentFrame;
+        this.key = key;
+        this.artist = artist;
+        this.album = album;
+        this.song = song;
     }
 
     @Override
@@ -37,11 +56,11 @@ public class CardMouseListener implements MouseListener {
                 currentFrame.dispose();
                 break;
             case "album":
-                AlbumFrame albumFrame = new AlbumFrame();
+                AlbumFrame albumFrame = new AlbumFrame(artist, album);
                 currentFrame.dispose();
                 break;
             case "song":
-                LyricsFrame lyricsFrame = new LyricsFrame();
+                LyricsFrame lyricsFrame = new LyricsFrame(artist, album, song);
                 currentFrame.dispose();
                 break;
             default:

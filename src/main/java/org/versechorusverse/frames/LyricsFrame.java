@@ -1,5 +1,8 @@
 package org.versechorusverse.frames;
 
+import org.versechorusverse.datas.Album;
+import org.versechorusverse.datas.Artist;
+import org.versechorusverse.datas.Song;
 import org.versechorusverse.guiCustomizations.BackgroundImage;
 import org.versechorusverse.guiCustomizations.MenuMouseListener;
 import org.versechorusverse.guiCustomizations.ModernScrollBarUI;
@@ -10,7 +13,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LyricsFrame extends JFrame implements ActionListener {
-    public LyricsFrame() {
+    private Artist artist;
+    private Album album;
+    private Song song;
+
+    public LyricsFrame(Artist artist, Album album, Song song) {
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(0, 0, 1016, 839);
 
@@ -137,9 +144,9 @@ public class LyricsFrame extends JFrame implements ActionListener {
         this.setVisible(true);
         this.setResizable(false);
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
 // Handle actions here
+
     }
 }

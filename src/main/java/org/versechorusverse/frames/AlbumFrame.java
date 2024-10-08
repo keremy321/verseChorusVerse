@@ -1,5 +1,7 @@
 package org.versechorusverse.frames;
 
+import org.versechorusverse.datas.Album;
+import org.versechorusverse.datas.Artist;
 import org.versechorusverse.guiCustomizations.*;
 
 import javax.swing.*;
@@ -12,11 +14,13 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 
 public class AlbumFrame extends JFrame implements ActionListener {
+    private Artist artist;
+    private Album album;
 
     private JComboBox comboBoxChartType;
-    JLabel sort;
+    private JLabel sort;
 
-    public AlbumFrame() {
+    public AlbumFrame(Artist artist, Album album) {
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(0, 0, 1016, 839);
 
