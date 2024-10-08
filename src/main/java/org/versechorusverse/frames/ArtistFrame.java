@@ -26,6 +26,7 @@ public class ArtistFrame extends JFrame {
     JLabel sort;
 
     public ArtistFrame(Artist artist) {
+        this.artist = artist;
 
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(0, 0, 1016, 839);
@@ -211,27 +212,31 @@ public class ArtistFrame extends JFrame {
         panel.add(listenersLabel);
         panel.add(yearLabel);
 
-//        panel.addMouseListener(new CardMouseListener(panel, this, "album"));
-
         return panel;
     }
+
     public void refreshAlbumCards() {
         SwingUtilities.invokeLater(() -> {
-            cardPanel.removeAll(); // Mevcut tüm kartları kaldır
-            for (Album album : albums) {  // Sıralanmış albüm listesinden her bir albüm için kart oluştur
+            cardPanel.removeAll();
+            for (Album album : albums) {
                 JPanel artistCard = createArtistCard(
-                        album.getAlbumName(),    // Albüm adı
-                        album.getReleaseYear(),  // Yayınlanma yılı
-                        album.getListeners(),    // Dinlenme sayısı
-                        album.getSongs(),        // Şarkı sayısı
-                        album.getLength(),       // Albüm uzunluğu
-                        album.getCoverPhotoPath()// Kapak fotoğrafı yolu
+                        album.getAlbumName(),
+                        album.getReleaseYear(),
+                        album.getListeners(),
+                        album.getSongs(),
+                        album.getLength(),
+                        album.getCoverPhotoPath()
                 );
 
-                cardPanel.add(artistCard); // Yeni kartı panele ekle
+                artistCard.addMouseListener(new CardMouseListener(artistCard, this, "album", artist, album));
+
+
+                artistCard.setPreferredSize(new Dimension(840, 100));
+
+                cardPanel.add(artistCard);
             }
-            cardPanel.revalidate();  // Paneli yeniden düzenle
-            cardPanel.repaint();     // Paneli yeniden çizdir
+            cardPanel.revalidate();
+            cardPanel.repaint();
         });
     }
     private ImageIcon loadImageIcon(String path) {
@@ -248,4 +253,7 @@ public class ArtistFrame extends JFrame {
             return null;
         }
     }
+
+
+
 }
