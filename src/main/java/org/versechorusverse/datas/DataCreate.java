@@ -291,11 +291,13 @@ public class DataCreate {
 
         Artist greenDay = new Artist(1, "Green Day", 1987, 1000000000, 5,
                 "/artistPhoto/greenDay.jpg", "1987",
-                "Green Day, 1987 yilinda Berkeley, Kaliforniya'da kurulmus bir rock grubudur. " +
-                        "Grup, punk rock, alternatif rock ve pop punk turlerinde eserler vermektedir. " +
-                        "Dookie albumu ile dunya capında buyuk bir basarı yakalamis ve bu album, punk rock müzigini " +
-                        "ana akım haline getirmiştir. Green Day, politik ve sosyal konulari ele alan sarkı sözleriyle " +
-                        "taninmaktadır ve bircok Grammy odulu kazanmıstir.",
+                "Green Day is an American rock band formed in 1986 in Berkeley, California, featuring lead vocalist Billie Joe Armstrong, bassist Mike Dirnt, and drummer Tré Cool. They gained fame with their 1994 album Dookie, which sold over 10 million copies and won a Grammy Award. Known for their catchy melodies and punk influences, the band has produced several acclaimed albums, including American Idiot (2004). Inducted into the Rock and Roll Hall of Fame in 2015, Green Day remains a major force in rock music.\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "\n",
                 albumsGreenDay);
 
         artists.add(greenDay);
@@ -394,9 +396,13 @@ public class DataCreate {
         // Metallica sanatçısını oluşturma
         Artist metallica = new Artist(3, "Metallica", 1981, 1000000000, 5,
                 "/artistPhoto/metallica.jpeg", "1981",
-                "Metallica, Amerikan heavy metal grubudur ve 1981 yılında kurulmustur. " +
-                        "Grup, agresif gitar riffleri, güçlü vokalleri ve anlamli sozleriyle taninmaktadir. " +
-                        "Metal muzigin dünyadaki en büyük temsilcilerinden biri olup, bircok Grammy odolu kazanmıstır.",
+                "Metallica is an American heavy metal band formed in 1981 in Los Angeles, California, by drummer Lars Ulrich and guitarist James Hetfield. They gained fame with albums like Master of Puppets (1986) and The Black Album (1991), featuring hits such as \"Enter Sandman.\" With over 125 million albums sold worldwide, Metallica is one of the best-selling music artists in history. Their aggressive sound and complex compositions have significantly influenced the metal genre, and they were inducted into the Rock and Roll Hall of Fame in 2009.\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "\n",
                 albumsMetallica);
 
         // Sanatçıyı listeye ekleme
@@ -634,9 +640,7 @@ public class DataCreate {
         // Eminem sanatçısını oluşturma
         Artist eminem = new Artist(4, "Eminem", 1999, 220000000, 11,
                 "/artistPhoto/eminem.jpeg", "1972",
-                "Eminem, Amerikali rapci, söz yazari ve produktordur. 1999 yilinda 'The Slim Shady LP' ile buyuk bir cıkıs yakalamıstır. " +
-                        "Kendine has tarzi ve keskin sözleriyle, hip hop müziginde çıgır açmış ve bircok odul kazanmıstır. " +
-                        "Eminem, ozellikle kisisel hayatı ve sosyal konular üzerine yazdıgı sarkılarla taninmaktadir.",
+                "Eminem, born Marshall Bruce Mathers III in 1972, is an American rapper and songwriter known for his rapid-fire lyrics and controversial themes. He gained fame with his 1999 album The Slim Shady LP, which won a Grammy Award. Eminem has released several critically acclaimed albums, including The Marshall Mathers LP and Recovery, and is one of the best-selling artists of all time, with over 220 million records sold worldwide. He has won multiple Grammy Awards and an Academy Award for Best Original Song.",
                 albumsEminem);
 
         // Sanatçı biyografisi
@@ -845,9 +849,8 @@ public class DataCreate {
         // Arctic Monkeys sanatçısını oluşturma
         Artist arcticMonkeys = new Artist(5, "Arctic Monkeys", 2002, 1000000000, 4,
                 "/artistPhoto/arcticmonkeys.jpeg", "2002",
-                "Arctic Monkeys, 2002 yılında Sheffield, İngiltere'de kurulmuş bir rock grubudur. " +
-                        "Grup, enerjik performanslari ve akilda kalici melodileriyle tanınmaktadır. " +
-                        "Cikis albumleri 'Whatever People Say I Am, That's What I'm Not' ile buyuk bir basari yakalamsitir.",
+                "\n" +
+                        "Arctic Monkeys is a British rock band formed in Sheffield in 2002, featuring lead vocalist Alex Turner. They gained fame with their debut album, Whatever People Say I Am, That's What I'm Not (2006), which became the fastest-selling debut album in British history. Known for their clever lyrics and catchy melodies, the band has released several successful albums, including AM (2013), and is regarded as one of the most influential bands of their generation.",
                 albumsArcticMonkeys);
 
         // Sanatçıyı listeye ekleme
@@ -993,10 +996,7 @@ public class DataCreate {
         // Nirvana sanatçısını oluşturma
         Artist nirvana = new Artist(2, "Nirvana", 1987, 750000000, 5,
                 "/artistPhoto/nirvana.jpeg", "1987",
-                "Nirvana, 1987 yılında Seattle, Washington'da kurulmuş bir rock grubudur. " +
-                        "Grup, alternatif rock ve grunge turlerinde müzik yapmis ve 'Nevermind' albumu ile dunya capinda " +
-                        "buyuk bir basari elde etmistir. Kurt Cobain, Krist Novoselic ve Dave Grohl'dan olusan Nirvana, " +
-                        "müzik dünyasinda derin bir etki birakmis ve genç nesillerin sesi haline gelmistir.",
+                "Nirvana was an American rock band formed in 1987 in Aberdeen, Washington, by Kurt Cobain and Krist Novoselic. They gained fame with their 1991 album Nevermind, featuring the hit \"Smells Like Teen Spirit,\" which helped popularize the grunge movement. Known for their raw sound and emotional lyrics, Nirvana became one of the most influential bands of the 1990s and left a lasting legacy on rock music after Cobain's death in 1994.",
                 albumsNirvana);
 
         // Sanatçıyı listeye ekleme

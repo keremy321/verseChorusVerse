@@ -51,7 +51,7 @@ public class ArtistFrame extends JFrame implements ActionListener {
         JLabel labelPhoto = new JLabel();
         labelPhoto.setBounds(75, 117, 200, 200);
 
-        ImageIcon artistPhoto = loadImageIcon("/artistPhoto/greenday.jpg");
+        ImageIcon artistPhoto = loadImageIcon(artist.getPhotoPath());
         if (artistPhoto != null) {
             Image img = artistPhoto.getImage();
             Image scaledImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
@@ -69,7 +69,7 @@ public class ArtistFrame extends JFrame implements ActionListener {
 
         JLabel labelBio = new JLabel();
         labelBio.setBounds(317, 184, 608, 135);
-        labelBio.setText(artist.getBiography());
+        labelBio.setText("<html>" + artist.getBiography() + "</html>");
         labelBio.setFont(new Font("Roboto Light", Font.PLAIN, 15));
         labelBio.setForeground(Color.WHITE);
         labelBio.setHorizontalAlignment(SwingConstants.LEFT);
