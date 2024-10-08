@@ -23,7 +23,13 @@ public class AlbumFrame extends JFrame {
     private JComboBox comboBoxChartType;
     private JLabel sort;
 
+    Artist artist;
+    Album album;
+
     public AlbumFrame(Artist artist, Album album) {
+        this.artist = artist;
+        this.album = album;
+
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(0, 0, 1016, 839);
 
@@ -113,7 +119,7 @@ public class AlbumFrame extends JFrame {
 
             artistCard.setPreferredSize(new Dimension(840, 100));
 
-            cardPanel.add(artistCard);            // Add the card to the card panel
+            cardPanel.add(artistCard);
 
         }
 
@@ -221,6 +227,11 @@ public class AlbumFrame extends JFrame {
             for (Song song : songs) {  // Sıralanmış albüm listesinden her bir albüm için kart oluştur
                 String name = song.getSongName();
                 JPanel artistCard = createArtistCard(name, song.getListeners(), song.getLength(), song.getReleaseYear(), song.getCoverPhotoPath());
+
+                artistCard.setPreferredSize(new Dimension(840, 100));
+
+                artistCard.addMouseListener(new CardMouseListener(artistCard, this, "song", artist, album, song));
+
                 cardPanel.add(artistCard); // Yeni kartı panele ekle
             }
             cardPanel.revalidate();  // Paneli yeniden düzenle
