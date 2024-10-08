@@ -52,7 +52,7 @@ public class ArtistsFrame extends JFrame implements ActionListener {
         labelSongs.setBounds(808, 20, 132, 19);
         labelSongs.addMouseListener(new MenuMouseListener(labelSongs, "/words/songsWhite.png", "songs", this));
 
-        String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least", "(Year) Oldest to Newest", "(Year) Newest to Oldest", "(Length) Least to Greatest", "(Length) Greatest to Least"};
+        String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least", "(Year) Oldest to Newest", "(Year) Newest to Oldest"};
         comboBoxChartType = new JComboBox(chartTypes);
         comboBoxChartType.setBounds(468, 100, 300, 32);
         comboBoxChartType.addActionListener(this);
@@ -123,7 +123,7 @@ public class ArtistsFrame extends JFrame implements ActionListener {
 
     private JPanel createArtistCard(String artistName, int listeners, int songs, int year,String photoPath) {
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 5, 10, 10));
+        panel.setLayout(new GridLayout(1, 4, 10, 10));
         panel.setBackground(new Color(0, 0, 0, 0));
         panel.setOpaque(false);
 
@@ -157,7 +157,6 @@ public class ArtistsFrame extends JFrame implements ActionListener {
         panel.add(photoLabel);
         panel.add(nameLabel);
         panel.add(listenersLabel);
-        panel.add(songsLabel);
         panel.add(foundedLabel);
 
 //        panel.addMouseListener(new CardMouseListener(panel, this, "artist"));

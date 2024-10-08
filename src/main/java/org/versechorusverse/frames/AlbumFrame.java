@@ -49,7 +49,7 @@ public class AlbumFrame extends JFrame implements ActionListener {
         JLabel labelPhoto = new JLabel();
         labelPhoto.setBounds(75, 117, 200, 200);
 
-        ImageIcon artistPhoto = loadImageIcon("/artistPhoto/greenday.jpg");
+        ImageIcon artistPhoto = loadImageIcon(album.getCoverPhotoPath());
         if (artistPhoto != null) {
             Image img = artistPhoto.getImage();
             Image scaledImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
@@ -60,26 +60,26 @@ public class AlbumFrame extends JFrame implements ActionListener {
         }
 
         JLabel albumName = new JLabel();
-        albumName.setText("ALBUM NAME");
+        albumName.setText(album.getAlbumName());
         albumName.setBounds(317, 117, 760, 53);
         albumName.setFont(new Font("Akira Expanded", Font.PLAIN, 40));
         albumName.setForeground(Color.WHITE);
 
         JLabel artistName = new JLabel();
-        artistName.setText("ARTIST NAME");
+        artistName.setText(artist.getArtistName());
         artistName.setBounds(317, 160, 760, 20);
         artistName.setFont(new Font("Roboto Thin", Font.PLAIN, 16));
         artistName.setForeground(Color.WHITE);
 
         JLabel labelBio = new JLabel();
         labelBio.setBounds(317, 184, 608, 135);
-        labelBio.setText("<html>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </html>");
+        labelBio.setText("<html>" + artist.getBiography() + "</html>");
         labelBio.setFont(new Font("Roboto Light", Font.PLAIN, 15));
         labelBio.setForeground(Color.WHITE);
         labelBio.setHorizontalAlignment(SwingConstants.LEFT);
         labelBio.setVerticalAlignment(SwingConstants.TOP);
 
-        String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least", "(Song Count) Least to Greatest", "(Song Count) Greatest to Least"};
+        String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least", "(Length) Least to Greatest", "(Length) Greatest to Least"};
         comboBoxChartType = new JComboBox(chartTypes);
         comboBoxChartType.setBounds(468, 341, 300, 32);
         comboBoxChartType.addActionListener(this);
@@ -152,7 +152,7 @@ public class AlbumFrame extends JFrame implements ActionListener {
 
     private JPanel createArtistCard(String artistName, int listeners, int lenght, int year, String photoPath) {
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 5, 10, 10));
+        panel.setLayout(new GridLayout(1, 4, 10, 10));
         panel.setBackground(new Color(0, 0, 0, 0));
         panel.setOpaque(false);
 
@@ -173,7 +173,7 @@ public class AlbumFrame extends JFrame implements ActionListener {
             photoLabel.setHorizontalAlignment(JLabel.CENTER);
         }
 
-        JLabel nameLabel = new JLabel(artistName);
+        JLabel nameLabel = new JLabel("<html>" + artistName + "</html>");
         nameLabel.setFont(new Font("Roboto Black", Font.BOLD, 20));
         nameLabel.setForeground(Color.WHITE);
         JLabel listenersLabel = new JLabel(listeners + " plays");
@@ -187,7 +187,6 @@ public class AlbumFrame extends JFrame implements ActionListener {
         panel.add(nameLabel);
         panel.add(listenersLabel);
         panel.add(lenghtLabel);
-        panel.add(yearLabel);
 
 //        panel.addMouseListener(new CardMouseListener(panel, this, "song"));
 
