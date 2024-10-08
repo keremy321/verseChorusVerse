@@ -3,6 +3,7 @@ package org.versechorusverse.frames;
 import org.versechorusverse.datas.Artist;
 import org.versechorusverse.datas.DataCreate;
 import org.versechorusverse.guiCustomizations.*;
+import org.versechorusverse.sort.SelectionSort;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -12,10 +13,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.List;
 
 
 public class ArtistsFrame extends JFrame implements ActionListener {
     DataCreate dataCreate = new DataCreate();
+    List<Artist> artists = dataCreate.artists;
     JPanel cardPanel;
 
 
@@ -183,31 +186,39 @@ public class ArtistsFrame extends JFrame implements ActionListener {
             String selectedOption = (String) comboBoxChartType.getSelectedItem();
             boolean descending = selectedOption.contains("Greatest to Least") || selectedOption.contains("Newest to Oldest");
 
-//            switch (selectedOption) {
-//                case "(Popularity) Least to Greatest":
-//                case "(Popularity) Greatest to Least":
-//                    SelectionSort.sortArtistsByListeners(artistDataList, descending);
-//                    refreshArtistCards();
-//                    break;
-//
-//                case "(Year) Oldest to Newest":
-//                case "(Year) Newest to Oldest":
-////                    SelectionSort.sortArtistsByYear(artistDataList, descending);
-//                    break;
-//
-//                case "(Length) Least to Greatest":
-//                case "(Length) Greatest to Least":
-//                    SelectionSort.sortArtistsBySongCount(artistDataList, descending);
-//                    refreshArtistCards();
-//                    break;
-//
-//                default:
-//                    break;
-//            }
+            switch (selectedOption) {
+                case "(Popularity) Least to Greatest":
+                case "(Popularity) Greatest to Least":
+                    SelectionSort.sortArtistsByListeners(artists,descending);
+                    for (Artist artist : artists) {
+                        System.out.println(artist.getArtistName());
+                    }
+                    break;
+
+                case "(Year) Oldest to Newest":
+                case "(Year) Newest to Oldest":
+                    SelectionSort.sortArtistsByYear(artists, descending);
+                    for (Artist artist : artists) {
+                        System.out.println(artist.getArtistName());
+                    }
+                    break;
+
+                case "(Length) Least to Greatest":
+                case "(Length) Greatest to Least":
+                    SelectionSort.sortArtistsBySongCount(artists, descending);
+                    for (Artist artist : artists) {
+                        System.out.println(artist.getArtistName());
+                    }
+                    break;
+
+                default:
+                    break;
+            }
 
             // Refresh the artist cards with sorted data
 
         }
     }
+
 
 }
