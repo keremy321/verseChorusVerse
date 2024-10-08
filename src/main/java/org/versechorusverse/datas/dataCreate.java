@@ -13,7 +13,16 @@ public class dataCreate {
     List<Song> songs5 = new ArrayList<>(); // Beşinci albümün şarkıları
     List<Album> albumsGreenDay = new ArrayList<>(); // Albümler listesi
 
+    public dataCreate() {
 
+        createGreenDayData();
+        createMetallicaData();
+        createEminemData();
+        createArcticMonkeysData();
+        createNirvanaData();
+
+
+    }
 
     List<Song> eminemSongs1 = new ArrayList<>(); // Birinci albümün şarkıları
     List<Song> eminemSongs2 = new ArrayList<>(); // İkinci albümün şarkıları
@@ -89,8 +98,119 @@ public class dataCreate {
                 "Summer has come and passed\n" +
                         "The innocent can never last...");
         Song song10 = new Song("Jesus of Suburbia", 670000000, 9, 2004, "path/to/cover.jpg",
-                "I'm the son of rage and love...\n" +
-                        "The Jesus of Suburbia...");
+                "I'm the son of rage and love\n" +
+                        "The Jesus of Suburbia\n" +
+                        "The bible of \"none of the above\"\n" +
+                        "On a steady diet of\n" +
+                        "Soda pop and Ritalin\n" +
+                        "No one ever died for my sins in hell\n" +
+                        "As far as I can tell\n" +
+                        "At least the ones I got away with\n" +
+                        "And there's nothing wrong with me\n" +
+                        "This is how I'm supposed to be\n" +
+                        "In a land of make-believe\n" +
+                        "That don't believe in me\n" +
+                        "Get my television fix\n" +
+                        "Sitting on my crucifix\n" +
+                        "The living room or my private womb\n" +
+                        "While the moms and Brads are away\n" +
+                        "To fall in love and fall in debt\n" +
+                        "To alcohol and cigarettes and Mary Jane\n" +
+                        "To keep me insane\n" +
+                        "Doing someone else's cocaine\n" +
+                        "And there's nothing wrong with me\n" +
+                        "This is how I'm supposed to be\n" +
+                        "In a land of make-believe\n" +
+                        "That don't believe in me\n" +
+                        "At the center of the earth, in the parking lot\n" +
+                        "Of the 7-11 where I was taught\n" +
+                        "The motto was just a lie\n" +
+                        "It says, \"Home is where your heart is, \" but what a shame\n" +
+                        "'Cause everyone's heart doesn't beat the same\n" +
+                        "It's beating out of time\n" +
+                        "City of the dead (hey, hey)\n" +
+                        "At the end of another lost highway (hey, hey)\n" +
+                        "Signs misleading to nowhere\n" +
+                        "City of the damned (hey, hey)\n" +
+                        "Lost children with dirty faces today (hey, hey)\n" +
+                        "No one really seems to care\n" +
+                        "I read the graffiti in the bathroom stall\n" +
+                        "Like the holy scriptures of the shopping mall\n" +
+                        "And so it seemed to confess\n" +
+                        "It didn't say much, but it only confirmed\n" +
+                        "That the center of the earth is the end of the world\n" +
+                        "And I could really care less\n" +
+                        "City of the dead (hey, hey)\n" +
+                        "At the end of another lost highway (hey, hey)\n" +
+                        "Signs misleading to nowhere\n" +
+                        "City of the damned (hey, hey)\n" +
+                        "Lost children with dirty faces today (hey, hey)\n" +
+                        "No one really seems to care (hey)\n" +
+                        "I don't care if you don't\n" +
+                        "I don't care if you don't\n" +
+                        "I don't care if you don't care\n" +
+                        "I don't care if you don't\n" +
+                        "I don't care if you don't\n" +
+                        "I don't care if you don't care\n" +
+                        "I don't care if you don't\n" +
+                        "I don't care if you don't\n" +
+                        "I don't care if you don't care\n" +
+                        "I don't care if you don't\n" +
+                        "I don't care if you don't\n" +
+                        "I don't care if you don't care\n" +
+                        "I don't care\n" +
+                        "Everyone's so full of shit\n" +
+                        "Born and raised by hypocrites\n" +
+                        "Hearts recycled, but never saved\n" +
+                        "From the cradles to the grave\n" +
+                        "We are the kids of war and peace\n" +
+                        "From Anaheim to the Middle East\n" +
+                        "We are the stories and disciples of\n" +
+                        "The Jesus of Suburbia\n" +
+                        "Land of make-believe\n" +
+                        "And it don't believe in me\n" +
+                        "Land of make-believe (said, now it's, it's another lie)\n" +
+                        "And I don't believe\n" +
+                        "And I don't care (whoo, whoo, whoo)\n" +
+                        "I don't care (whoo, whoo, whoo)\n" +
+                        "I don't care (whoo, whoo, whoo)\n" +
+                        "I don't care (whoo, whoo, whoo)\n" +
+                        "I don't care\n" +
+                        "Dearly beloved, are you listening?\n" +
+                        "I can't remember a word that you were saying\n" +
+                        "Are we demented, or am I disturbed?\n" +
+                        "The space that's in between insane and insecure\n" +
+                        "Ooh\n" +
+                        "Ooh\n" +
+                        "oh therapy, can you please fill the void?\n" +
+                        "(Ooh) am I retarded, or am I just overjoyed?\n" +
+                        "(Ooh) nobody's perfect, and I stand accused\n" +
+                        "(Ooh) for lack of a better word, and that's my best excuse\n" +
+                        "Ooh\n" +
+                        "Ooh\n" +
+                        "To live and not to breathe\n" +
+                        "Is to die in tragedy\n" +
+                        "To run, to run away\n" +
+                        "To find what you believe\n" +
+                        "And I leave behind\n" +
+                        "This hurricane of fucking lies\n" +
+                        "I lost my faith to this\n" +
+                        "This town that don't exist\n" +
+                        "So I run, I run away\n" +
+                        "To the light of masochists\n" +
+                        "And I leave behind\n" +
+                        "This hurricane of fucking lies\n" +
+                        "And I've walked this line\n" +
+                        "A million and one fucking times\n" +
+                        "But not this time\n" +
+                        "I don't feel any shame, I won't apologize\n" +
+                        "When there ain't nowhere you can go\n" +
+                        "Runnin' away from pain when you've been victimized\n" +
+                        "Tales from another broken home\n" +
+                        "You're leavin'\n" +
+                        "You're leavin'\n" +
+                        "You're leavin'\n" +
+                        "Are you leavin' home?\n");
         songs2.add(song6);
         songs2.add(song7);
         songs2.add(song8);
@@ -371,7 +491,127 @@ public class dataCreate {
         Song eminemSong22 = new Song("The Ringer", 850000000, 5, 2018, "path/to/cover.jpg",
                 "I'm just gonna write down my first thoughts\nSee where this takes me...");
         Song eminemSong23 = new Song("Venom", 770000000, 4, 2018, "path/to/cover.jpg",
-                "Venom (I got that)\nAdrenaline momentum...");
+                "I got a song filled with sh- for the strong-willed\n" +
+                        "When the world gives you a raw deal\n" +
+                        "Sets you off 'til you scream, \"Piss off! Screw you!\"\n" +
+                        "When it talks to you like you don't belong\n" +
+                        "Or tells you you're in the wrong field\n" +
+                        "When something's in your mitochondrial\n" +
+                        "'Cause it latched on to you, like-\n" +
+                        "Knock knock, let the devil in\n" +
+                        "Manevolent as I've ever been, head is spinnin'\n" +
+                        "This medicine's screamin', \"l-l-l-let us in!\"\n" +
+                        "L-l-l-like a salad bowl, Edgar Allan Poe\n" +
+                        "Bedridden, shoulda been dead a long time ago\n" +
+                        "Liquid tylenol, gelatins, think my skeleton's meltin'\n" +
+                        "Wicked, I get all high when I think I've smelled the scent\n" +
+                        "Of elephant manure, hell, I meant Kahlúa\n" +
+                        "Screw it, to hell with it, I went through hell with accelerants\n" +
+                        "And blew up my-my-myself again\n" +
+                        "Volkswagen, tailspin, bucket matches my pale skin\n" +
+                        "Mayo and went from hellmann's and being rail thin\n" +
+                        "Filet-o-Fish, Scribble Jam, Rap Olympics '97 Freaknik\n" +
+                        "How can I be down? Me and Bizarre in Florida\n" +
+                        "Proof's room slept on the floor of da motel then\n" +
+                        "Dr. Dre said, \"Hell yeah!\"\n" +
+                        "And I got his stamp like a postcard, word to Mel-Man\n" +
+                        "And I know they're gonna hate\n" +
+                        "But I don't care, I barely can wait\n" +
+                        "To hit 'em with the snare and the bass\n" +
+                        "Square in the face, this f- world better prepare to get laced\n" +
+                        "Because they're gonna taste my\n" +
+                        "Venom, (I got that) adrenaline momentum\n" +
+                        "And I'm not knowin' when I'm\n" +
+                        "Ever gonna slow up and I'm\n" +
+                        "Ready to snap any moment I'm\n" +
+                        "Thinkin' it's time to go get 'em\n" +
+                        "They ain't gonna know what hit 'em\n" +
+                        "(W-w-when they get bit with the)\n" +
+                        "Venom, (I got that) adrenaline momentum\n" +
+                        "And I'm not knowin' when I'm\n" +
+                        "Ever gonna slow up and I'm\n" +
+                        "Ready to snap any moment I'm\n" +
+                        "Thinkin' it's time to go get 'em\n" +
+                        "They ain't gonna know what hit 'em\n" +
+                        "(W-w-when they get bit with the)\n" +
+                        "I said knock knock, let the devil in\n" +
+                        "Shotgun p-p-pellets in the felt pen\n" +
+                        "Cocked, f- around and catch a hot one\n" +
+                        "It-it's evident, I'm not done\n" +
+                        "V-venomous, the thoughts spun\n" +
+                        "Like a web and you just caught in 'em\n" +
+                        "Held against your will like a hubcap or mud flap\n" +
+                        "Beat strangler attack\n" +
+                        "So this ain't gonna feel like a love tap\n" +
+                        "Eat painkiller pills, f- up the track\n" +
+                        "Like, what's her name's at the wheel? Danica Patrick\n" +
+                        "Threw the car into reverse at the Indy, a nut crashin'\n" +
+                        "Into ya, the back of it just mangled steel\n" +
+                        "My Mustang and the jeep Wrangler grill\n" +
+                        "With the front smashed, much as my rear fender, assassin\n" +
+                        "Slim be a combination of an actual kamikaze and Gandhi (Gandhi)\n" +
+                        "Translation, I will probably kill us both\n" +
+                        "When I end up backin' into ya\n" +
+                        "You ain't gonna be able to tell what the fuck's happenin' to ya\n" +
+                        "When you're bit with the\n" +
+                        "Venom, adrenaline momentum\n" +
+                        "And I'm not knowin' when I'm\n" +
+                        "Ever gonna slow up and I'm\n" +
+                        "Ready to snap any moment I'm\n" +
+                        "Thinkin' it's time to go get 'em\n" +
+                        "They ain't gonna know what hit 'em\n" +
+                        "(W-w-when they get bit with the)\n" +
+                        "Venom, (I got that) adrenaline momentum\n" +
+                        "And I'm not knowin' when I'm\n" +
+                        "Ever gonna slow up and I'm\n" +
+                        "Ready to snap any moment I'm\n" +
+                        "Thinkin' it's time to go get 'em\n" +
+                        "They ain't gonna know what hit 'em\n" +
+                        "(W-w-when they get bit with the)\n" +
+                        "I said knock knock, let the devil in\n" +
+                        "Alien, E-E-Elliott phone home\n" +
+                        "Ain't no telling when this chokehold\n" +
+                        "On this game will end, I'm loco\n" +
+                        "Became a symbiote, so\n" +
+                        "My fangs are in your throat, h-\n" +
+                        "You're snake-bitten with my, venom\n" +
+                        "With the ballpoint pen, I'm\n" +
+                        "Gun cocked, bump stock, double-aught, buckshot\n" +
+                        "Tire thumper, a garrote, tie a couple knots\n" +
+                        "Fired up and caught fire, juggernaut\n" +
+                        "Punk rock, b-, it's goin' down like Yung Joc\n" +
+                        "'Cause the Doc put me on like sunblock\n" +
+                        "Why the f-not, you only get one shot\n" +
+                        "Ate sh- 'til I can't taste it\n" +
+                        "Chased it with straight liquor\n" +
+                        "Then paint thinner, then drank 'til I faint\n" +
+                        "And awake with a headache\n" +
+                        "And I take anything in rectangular shape\n" +
+                        "Then I wait to face the demons I'm bonded to\n" +
+                        "'Cause they're chasin' me, but I'm part of you\n" +
+                        "So escapin' me is impossible\n" +
+                        "I latch onto you like a parasite\n" +
+                        "And I probably ruined your parents' life\n" +
+                        "And your childhood too\n" +
+                        "'Cause if I'm the music that y'all grew up on\n" +
+                        "I'm responsible for you - fools\n" +
+                        "I'm the super villain Dad and Mom was losin' their marbles to\n" +
+                        "You marvel that? Eddie Brock is you\n" +
+                        "And I'm the suit, so call me\n" +
+                        "Venom, (I got that) adrenaline momentum\n" +
+                        "And I'm not knowing when I'm\n" +
+                        "Ever gonna slow up and I'm\n" +
+                        "Ready to snap any moment I'm\n" +
+                        "Thinkin' it's time to go get 'em\n" +
+                        "They ain't gonna know what hit 'em\n" +
+                        "(W-w-when they get bit with the)\n" +
+                        "Venom, (I got that) adrenaline momentum\n" +
+                        "And I'm not knowing when I'm\n" +
+                        "Ever gonna slow up and I'm\n" +
+                        "Ready to snap any moment I'm\n" +
+                        "Thinkin' it's time to go get 'em\n" +
+                        "They ain't gonna know what hit 'em\n" +
+                        "(W-w-when they get bit with the)");
         Song eminemSong24 = new Song("Fall", 650000000, 4, 2018, "path/to/cover.jpg",
                 "Don't fall on my face, don't fall on my faith, oh...");
         Song eminemSong25 = new Song("Good Guy", 450000000, 5, 2018, "path/to/cover.jpg",
@@ -472,9 +712,112 @@ public class dataCreate {
 
         // Albüm 4: AM (2013)
         Song song19 = new Song("Do I Wanna Know?", 700000000, 4, 2013, "path/to/cover.jpg",
-                "Have you got color in your cheeks?");
+                "Have you got colour in your cheeks?\n" +
+                        "Do you ever get that fear that you can't shift\n" +
+                        "The type that sticks around like summat in your teeth?\n" +
+                        "Are there some aces up your sleeve?\n" +
+                        "Have you no idea that you're in deep?\n" +
+                        "I dreamt about you nearly every night this week\n" +
+                        "How many secrets can you keep?\n" +
+                        "'Cause there's this tune I found that makes me think of you somehow\n" +
+                        "And I play it on repeat\n" +
+                        "Until I fall asleep\n" +
+                        "Spilling drinks on my settee\n" +
+                        "\n" +
+                        "(Do I wanna know?)\n" +
+                        "If this feeling flows both ways?\n" +
+                        "(Sad to see you go)\n" +
+                        "Was sort of hoping that you'd stay\n" +
+                        "(Baby, we both know)\n" +
+                        "That the nights were mainly made for saying things that you can't say tomorrow day\n" +
+                        "\n" +
+                        "Crawling back to you\n" +
+                        "\n" +
+                        "Ever thought of calling when you've had a few?\n" +
+                        "'Cause I always do\n" +
+                        "Maybe I'm too busy being yours to fall for somebody new\n" +
+                        "Now I've thought it through\n" +
+                        "\n" +
+                        "Crawling back to you\n" +
+                        "\n" +
+                        "So have you got the guts?\n" +
+                        "Been wondering if your heart's still open and if so I wanna know what time it shuts\n" +
+                        "Simmer down and pucker up\n" +
+                        "I'm sorry to interrupt\n" +
+                        "It's just I'm constantly on the cusp\n" +
+                        "Of trying to kiss you\n" +
+                        "I don't know if you feel the same as I do\n" +
+                        "But we could be together\n" +
+                        "If you wanted to\n" +
+                        "\n" +
+                        "(Do I wanna know?)\n" +
+                        "If this feeling flows both ways?\n" +
+                        "(Sad to see you go)\n" +
+                        "Was sort of hoping that you'd stay\n" +
+                        "(Baby, we both know)\n" +
+                        "That the nights were mainly made for saying things that you can't say tomorrow day\n" +
+                        "\n" +
+                        "Crawling back to you (crawling back to you)\n" +
+                        "\n" +
+                        "Ever thought of calling when you've had a few? (you've had a few)\n" +
+                        "'Cause I always do ('cause I always do)\n" +
+                        "Maybe I'm too (maybe I'm too busy) busy being yours to fall for somebody new\n" +
+                        "Now I've thought it through\n" +
+                        "\n" +
+                        "Crawling back to you\n" +
+                        "\n" +
+                        "(Do I wanna know?)\n" +
+                        "If this feeling flows both ways?\n" +
+                        "(Sad to see you go)\n" +
+                        "Was sort of hoping that you'd stay\n" +
+                        "(Baby, we both know)\n" +
+                        "That the nights were mainly made for saying things that you can't say tomorrow day\n" +
+                        "\n" +
+                        "(Do I wanna know?)\n" +
+                        "Too busy being yours to fall\n" +
+                        "(Sad to see you go)\n" +
+                        "Ever thought of calling darling?\n" +
+                        "(Do I wanna know?)\n" +
+                        "Do you want me crawling back to you?");
         Song song20 = new Song("R U Mine?", 600000000, 4, 2013, "path/to/cover.jpg",
-                "I'm a puppet on a string...");
+                "I'm a puppet on a string\n" +
+                        "Tracy Island, time-travelin' diamond cutter-shaped heartaches\n" +
+                        "Come to find you four in some velvet mornin' years too late\n" +
+                        "She's a silver linin', lone ranger ridin' through an open space\n" +
+                        "In my mind, when she's not right there beside me\n" +
+                        "I go crazy 'cause here isn't where I wanna be\n" +
+                        "And satisfaction feels like a distant memory\n" +
+                        "And I can't help myself\n" +
+                        "All I wanna ever say is, \"Are you mine?\"\n" +
+                        "Well, are you mine?\n" +
+                        "Are you mine?\n" +
+                        "Are you mine? Oh, ah\n" +
+                        "I guess what I'm tryin' to say is I need the deep end\n" +
+                        "Keep imaginin' meetin', wished away entire lifetimes\n" +
+                        "Unfair we're not somewhere misbehavin' for days\n" +
+                        "Great escape, lost track of time and space\n" +
+                        "She's a silver linin', climbin' on my desire\n" +
+                        "And I go crazy 'cause here isn't where I wanna be\n" +
+                        "And satisfaction feels like a distant memory\n" +
+                        "And I can't help myself\n" +
+                        "All I wanna ever say is, \"Are you mine?\"\n" +
+                        "Well, are you mine? (Are you mine tomorrow?)\n" +
+                        "Are you mine? (Or just mine tonight?)\n" +
+                        "Are you mine? (Are you mine? Mine?)\n" +
+                        "And the thrill of the chase moves in mysterious ways\n" +
+                        "So in case I'm mistaken, I\n" +
+                        "Just wanna hear you say, \"You got me baby\"\n" +
+                        "\"Are you mine?\"\n" +
+                        "She's a silver linin', lone ranger ridin' through an open space\n" +
+                        "In my mind, when she's not right there beside me\n" +
+                        "I go crazy 'cause here isn't where I wanna be\n" +
+                        "And satisfaction feels like a distant memory\n" +
+                        "And I can't help myself\n" +
+                        "All I wanna ever say is, \"Are you mine?\"\n" +
+                        "Well, are you mine? (Are you mine tomorrow?)\n" +
+                        "Are you mine? (Or just mine tonight?)\n" +
+                        "Are you mine? (Are you mine tomorrow?)\n" +
+                        "(Oh, ah, or just mine tonight?)");
         Song song21 = new Song("One for the Road", 550000000, 4, 2013, "path/to/cover.jpg",
                 "You know I could never give you up...");
         Song song22 = new Song("Arabella", 500000000, 4, 2013, "path/to/cover.jpg",
@@ -529,7 +872,63 @@ public class dataCreate {
         // Albüm 2: Nevermind (1991)
 
         songs22.add(new Song("Smells Like Teen Spirit", 1200000000, 5, 1991, "path/to/cover.jpg",
-                "With the lights out, it's less dangerous...\nHere we are now, entertain us..."));
+                "Load up on guns, bring your friends\n" +
+                        "It's fun to lose and to pretend\n" +
+                        "She's over-bored and self-assured\n" +
+                        "Oh no, I know a dirty word\n" +
+                        "Hello, hello, hello, how low\n" +
+                        "Hello, hello, hello, how low\n" +
+                        "Hello, hello, hello, how low\n" +
+                        "Hello, hello, hello\n" +
+                        "With the lights out, it's less dangerous\n" +
+                        "Here we are now, entertain us\n" +
+                        "I feel stupid and contagious\n" +
+                        "Here we are now, entertain us\n" +
+                        "A mulatto, an albino\n" +
+                        "A mosquito, my libido\n" +
+                        "Yeah\n" +
+                        "Hey\n" +
+                        "Yay\n" +
+                        "I'm worse at what I do best\n" +
+                        "And for this gift I feel blessed\n" +
+                        "Our little group has always been\n" +
+                        "And always will until the end\n" +
+                        "Hello, hello, hello, how low\n" +
+                        "Hello, hello, hello, how low\n" +
+                        "Hello, hello, hello, how low\n" +
+                        "Hello, hello, hello\n" +
+                        "With the lights out, it's less dangerous\n" +
+                        "Here we are now, entertain us\n" +
+                        "I feel stupid and contagious\n" +
+                        "Here we are now, entertain us\n" +
+                        "A mulatto, an albino\n" +
+                        "A mosquito, my libido\n" +
+                        "Yeah\n" +
+                        "Hey\n" +
+                        "Yay\n" +
+                        "And I forget just why I taste\n" +
+                        "Oh yeah, I guess it makes me smile\n" +
+                        "I found it hard, it's hard to find\n" +
+                        "Ooh well, whatever, nevermind\n" +
+                        "Hello, hello, hello, how low\n" +
+                        "Hello, hello, hello, how low\n" +
+                        "Hello, hello, hello, how low\n" +
+                        "Hello, hello, hello\n" +
+                        "With the lights out, it's less dangerous\n" +
+                        "Here we are now, entertain us\n" +
+                        "I feel stupid and contagious\n" +
+                        "Here we are now, entertain us\n" +
+                        "A mulatto, an albino\n" +
+                        "A mosquito, my libido\n" +
+                        "A denial\n" +
+                        "A denial\n" +
+                        "A denial\n" +
+                        "A denial\n" +
+                        "A denial\n" +
+                        "A denial\n" +
+                        "A denial\n" +
+                        "A denial\n" +
+                        "A denial"));
         songs22.add(new Song("Come as You Are", 850000000, 4, 1991, "path/to/cover.jpg",
                 "Come as you are, as you were...\nAs I want you to be..."));
         songs22.add(new Song("Lithium", 700000000, 4, 1991, "path/to/cover.jpg",

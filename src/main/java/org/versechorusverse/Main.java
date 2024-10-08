@@ -13,11 +13,7 @@ public class Main {
         MainFrame mainFrame = new MainFrame();
         mainFrame.setVisible(true);
         dataCreate DataCreator = new dataCreate();
-        DataCreator.createGreenDayData(); // Verileri oluştur
-        DataCreator.createMetallicaData(); // Verileri oluştur
-        DataCreator.createEminemData(); // Verileri oluştur
-        DataCreator.createArcticMonkeysData(); // Verileri oluştur
-        DataCreator.createNirvanaData(); // Verileri oluştur
+
 
 
         // Sanatçıları listele
