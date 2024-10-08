@@ -5,6 +5,7 @@ import org.versechorusverse.data.ArtistData;
 import org.versechorusverse.data.AlbumData;
 import org.versechorusverse.datas.Album;
 import org.versechorusverse.datas.Artist;
+import org.versechorusverse.datas.Song;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,8 +80,8 @@ public class SelectionSort {
 
     public static List<Album> sortAlbumsByListeners(List<Artist> artists, boolean descending) {
         List<Album> albums = new ArrayList<>();
-        for(Artist artist : artists) {
-            for(Album album : artist.getAlbums()) {
+        for (Artist artist : artists) {
+            for (Album album : artist.getAlbums()) {
                 albums.add(album);
             }
         }
@@ -108,8 +109,8 @@ public class SelectionSort {
 
     public static List<Album> sortAlbumsByYear(List<Artist> artists, boolean descending) {
         List<Album> albums = new ArrayList<>();
-        for(Artist artist : artists) {
-            for(Album album : artist.getAlbums()) {
+        for (Artist artist : artists) {
+            for (Album album : artist.getAlbums()) {
                 albums.add(album);
             }
         }
@@ -134,67 +135,65 @@ public class SelectionSort {
         return albums;
     }
 
-    public static void sortSongsByListeners(List<SongData> dataList, boolean descending) {
-        int n = dataList.size();
+    public static List<Song> sortSongsByListeners(List<Artist> artists, boolean descending) {
+        List<Song> songs = new ArrayList<>();
+        for (Artist artist : artists) {
+            for(Album album : artist.getAlbums()) {
+                for (Song song: album.getSong()){
+                    songs.add(song);
+                }
+            }
+        }
+
+        int n = songs.size();
         for (int i = 0; i < n - 1; i++) {
             int selected = i;
             for (int j = i + 1; j < n; j++) {
                 if (descending) {
-                    if (dataList.get(j).getListeners() > dataList.get(selected).getListeners()) {
+                    if (songs.get(j).getListeners() > songs.get(selected).getListeners()) {
                         selected = j;
                     }
                 } else {
-                    if (dataList.get(j).getListeners() < dataList.get(selected).getListeners()) {
+                    if (songs.get(j).getListeners() < songs.get(selected).getListeners()) {
                         selected = j;
                     }
                 }
             }
             // Swap
-            SongData temp = dataList.get(selected);
-            dataList.set(selected, dataList.get(i));
-            dataList.set(i, temp);
+            Song temp = songs.get(selected);
+            songs.set(selected, songs.get(i));
+            songs.set(i, temp);
         }
+        return songs;
     }
 
-    public static void sortSongsByLength(List<SongData> dataList, boolean descending) {
-        int n = dataList.size();
+    public static List<Song> sortSongsByLength(List<Artist> artists, boolean descending) {
+        List<Song> songs = new ArrayList<>();
+        for (Artist artist : artists) {
+            for(Album album : artist.getAlbums()) {
+                for (Song song: album.getSong()){
+                    songs.add(song);
+                }
+            }
+        }
+        int n = songs.size();
         for (int i = 0; i < n - 1; i++) {
             int selected = i;
             for (int j = i + 1; j < n; j++) {
                 if (descending) {
-                    if (dataList.get(j).getLength() > dataList.get(selected).getLength()) {
+                    if (songs.get(j).getLength() > songs.get(selected).getLength()) {
                         selected = j;
                     }
                 } else {
-                    if (dataList.get(j).getLength() < dataList.get(selected).getLength()) {
+                    if (songs.get(j).getLength() < songs.get(selected).getLength()) {
                         selected = j;
                     }
                 }
             }
-            SongData temp = dataList.get(selected);
-            dataList.set(selected, dataList.get(i));
-            dataList.set(i, temp);
+            Song temp = songs.get(selected);
+            songs.set(selected, songs.get(i));
+            songs.set(i, temp);
         }
-    }
-
-    public static void sortSongsByYear(List<SongData> dataList, boolean descending) {
-        int n = dataList.size();
-        for (int i = 0; i < n - 1; i++) {
-            int selected = i;
-            for (int j = i + 1; j < n; j++) {
-                if (descending) {
-                    if (dataList.get(j).getReleaseYear() > dataList.get(selected).getReleaseYear()) {
-                        selected = j;
-                    }
-                } else {
-                    if (dataList.get(j).getReleaseYear() < dataList.get(selected).getReleaseYear()) {
-                        selected = j;
-                    }
-                }
-            }
-            SongData temp = dataList.get(selected);
-            dataList.set(selected, dataList.get(i));
-            dataList.set(i, temp);
-        }
+        return songs;
     }
 }

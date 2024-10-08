@@ -5,6 +5,7 @@ import org.versechorusverse.datas.Artist;
 import org.versechorusverse.datas.DataCreate;
 import org.versechorusverse.datas.Song;
 import org.versechorusverse.guiCustomizations.*;
+import org.versechorusverse.sort.SelectionSort;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -14,10 +15,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SongsFrame extends JFrame implements ActionListener {
     DataCreate dataCreate = new DataCreate();
-
+    List<Artist> artists= dataCreate.artists;
+    List<Song> songs = new ArrayList<>();
+    JPanel cardPanel = new JPanel();
     private JComboBox comboBoxChartType;
     private JLabel sort;
 
@@ -48,7 +53,7 @@ public class SongsFrame extends JFrame implements ActionListener {
         labelSongs.setBounds(808, 20, 132, 19);
         labelSongs.addMouseListener(new MenuMouseListener(labelSongs, "/words/songsWhite.png", "songs", this));
 
-        String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least", "(Song Count) Least to Greatest", "(Song Count) Greatest to Least"};
+        String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least", "(Length) Least to Greatest", "(Length) Greatest to Least"};
         comboBoxChartType = new JComboBox(chartTypes);
         comboBoxChartType.setBounds(468, 100, 300, 32);
         comboBoxChartType.addActionListener(this);
@@ -65,7 +70,6 @@ public class SongsFrame extends JFrame implements ActionListener {
         sort.setIcon(new ImageIcon(getClass().getResource("/sort.png")));
         sort.addMouseListener(new SortMouseListener(sort, "/sort.png"));
 
-        JPanel cardPanel = new JPanel();
         cardPanel.setLayout(new GridLayout(0, 1, 10, 0));
         cardPanel.setOpaque(false);
 
@@ -178,9 +182,41 @@ public class SongsFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == comboBoxChartType) {
+            String selectedOption = (String) comboBoxChartType.getSelectedItem();
+            boolean descending = selectedOption.contains("Greatest to Least");
 
+            switch (selectedOption) {
+                case "(Popularity) Least to Greatest":
+                case "(Popularity) Greatest to Least":
+                    songs= SelectionSort.sortSongsByListeners(artists, descending);
+                    refreshSongCards();
+                    break;
+                case "(Length) Least to Greatest":
+                case "(Length) Greatest to Least":
+                    songs= SelectionSort.sortSongsByLength(artists,descending);
+                    refreshSongCards();
+            }
+
+
+        }
     }
 
+    private void refreshSongCards() {
+        SwingUtilities.invokeLater(() -> {
+            cardPanel.removeAll();
+
+            for (Song song : songs) {
+                String name = song.getSongName();
+                JPanel artistCard = createArtistCard("a", song.getListeners(), song.getLength(), song.getReleaseYear(), song.getCoverPhotoPath());
+                artistCard.setName(song.getSongName());
+                cardPanel.add(artistCard);
+            }
+
+            cardPanel.revalidate();
+            cardPanel.repaint();
+        });
+    }
 
 }
 
