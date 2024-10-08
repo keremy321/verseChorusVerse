@@ -79,6 +79,11 @@ public class AlbumsFrame extends JFrame implements ActionListener {
                         album.getLength(),                // Pass the album's length
                         album.getCoverPhotoPath()         // Pass the path to the album cover photo
                 );
+
+                artistCard.setName(album.getAlbumName());
+
+                artistCard.addMouseListener(new CardMouseListener(artistCard, this, "album", artist, album));
+
                 cardPanel.add(artistCard);            // Add the card to the card panel
             }
         }
