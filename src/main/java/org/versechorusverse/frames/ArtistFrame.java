@@ -75,7 +75,7 @@ public class ArtistFrame extends JFrame implements ActionListener {
         labelBio.setHorizontalAlignment(SwingConstants.LEFT);
         labelBio.setVerticalAlignment(SwingConstants.TOP);
 
-        String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least", "(Song Count) Least to Greatest", "(Song Count) Greatest to Least"};
+        String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least","(Year) Oldest to Newest", "(Year) Newest to Oldest"};
         comboBoxChartType = new JComboBox(chartTypes);
         comboBoxChartType.setBounds(468, 341, 300, 32);
         comboBoxChartType.addActionListener(this);
@@ -146,7 +146,7 @@ public class ArtistFrame extends JFrame implements ActionListener {
 
     private JPanel createArtistCard(String artistName, int year ,int listeners, int songs, int length, String photoPath) {
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 6, 10, 10));
+        panel.setLayout(new GridLayout(1, 4, 10, 10));
         panel.setBackground(new Color(0, 0, 0, 0));
         panel.setOpaque(false);
 
@@ -167,7 +167,7 @@ public class ArtistFrame extends JFrame implements ActionListener {
             photoLabel.setHorizontalAlignment(JLabel.CENTER);
         }
 
-        JLabel nameLabel = new JLabel(artistName);
+        JLabel nameLabel = new JLabel("<html>" + artistName + "</html>");
         nameLabel.setFont(new Font("Roboto Black", Font.BOLD, 20));
         nameLabel.setForeground(Color.WHITE);
         JLabel yearLabel = new JLabel("Released in " + year);
@@ -182,8 +182,6 @@ public class ArtistFrame extends JFrame implements ActionListener {
         panel.add(photoLabel);
         panel.add(nameLabel);
         panel.add(listenersLabel);
-        panel.add(songsLabel);
-        panel.add(lengthLabel);
         panel.add(yearLabel);
 
 //        panel.addMouseListener(new CardMouseListener(panel, this, "album"));

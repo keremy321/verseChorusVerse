@@ -53,7 +53,7 @@ public class AlbumsFrame extends JFrame implements ActionListener {
         labelSongs.setBounds(808, 20, 132, 19);
         labelSongs.addMouseListener(new MenuMouseListener(labelSongs, "/words/songsWhite.png", "songs", this));
 
-        String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least", "(Song Count) Least to Greatest", "(Song Count) Greatest to Least", "(Year) Oldest to Newest", "(Year) Newest to Oldest", "(Length) Least to Greatest", "(Length) Greatest to Least"};
+        String[] chartTypes = {"(Popularity) Least to Greatest", "(Popularity) Greatest to Least","(Year) Oldest to Newest", "(Year) Newest to Oldest"};
         comboBoxChartType = new JComboBox(chartTypes);
         comboBoxChartType.setBounds(468, 100, 300, 32);
         comboBoxChartType.addActionListener(this);
@@ -128,7 +128,7 @@ public class AlbumsFrame extends JFrame implements ActionListener {
 
     private JPanel createArtistCard(String artistName, int year, int listeners, int songs, int length, String photoPath) {
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 6, 10, 10));
+        panel.setLayout(new GridLayout(1, 4, 10, 10));
         panel.setBackground(new Color(0, 0, 0, 0));
         panel.setOpaque(false);
 
@@ -149,9 +149,7 @@ public class AlbumsFrame extends JFrame implements ActionListener {
             photoLabel.setHorizontalAlignment(JLabel.CENTER);
         }
 
-        String truncatedName = truncateText(artistName, 20); // Set a limit, e.g., 20 characters
-
-        JLabel nameLabel = new JLabel(truncatedName);
+        JLabel nameLabel = new JLabel("<html>" + artistName + "</html>");
         nameLabel.setFont(new Font("Roboto Black", Font.BOLD, 20));
         nameLabel.setForeground(Color.WHITE);
         nameLabel.setPreferredSize(new Dimension(200, 30));  // Set a constant width for the name label
@@ -169,8 +167,6 @@ public class AlbumsFrame extends JFrame implements ActionListener {
         panel.add(photoLabel);
         panel.add(nameLabel);
         panel.add(listenersLabel);
-        panel.add(songsLabel);
-        panel.add(lengthLabel);
         panel.add(yearLabel);
 
 //        panel.addMouseListener(new CardMouseListener(panel, this, "album"));
@@ -191,13 +187,6 @@ public class AlbumsFrame extends JFrame implements ActionListener {
             System.err.println("Error loading image: " + e.getMessage());
             return null;
         }
-    }
-
-    private String truncateText(String text, int maxLength) {
-        if (text.length() <= maxLength) {
-            return text;
-        }
-        return text.substring(0, maxLength) + "...";
     }
 
     @Override
