@@ -6,6 +6,7 @@ import java.util.List;
 public class DataCreate {
 
     // Green Day için albüm ve şarkı listeleri
+
     List<Song> songs1 = new ArrayList<>(); // Birinci albümün şarkıları
     List<Song> songs2 = new ArrayList<>(); // İkinci albümün şarkıları
     List<Song> songs3 = new ArrayList<>(); // Üçüncü albümün şarkıları
