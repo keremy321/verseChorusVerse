@@ -3,6 +3,7 @@ package org.versechorusverse.frames;
 import org.versechorusverse.datas.Album;
 import org.versechorusverse.datas.Artist;
 import org.versechorusverse.datas.DataCreate;
+import org.versechorusverse.datas.Song;
 import org.versechorusverse.guiCustomizations.*;
 import org.versechorusverse.sort.SelectionSort;
 
@@ -74,22 +75,24 @@ public class AlbumsFrame extends JFrame implements ActionListener {
         cardPanel.setLayout(new GridLayout(0, 1, 10, 0));
         cardPanel.setOpaque(false);
 
-        for (Artist artist : dataCreate.artists) {  // Loop through each artist
-            for (Album album : artist.getAlbums()) {  // Loop through each album of the artist
+        for (Artist artist : dataCreate.artists) {
+            for (Album album : artist.getAlbums()) {
                 JPanel artistCard = createArtistCard(
-                        album.getAlbumName(),                 // Pass the artist's name
-                        album.getReleaseYear(),           // Pass the album's release year
-                        album.getListeners(),             // Pass the album's listeners count
-                        album.getSongs(),          // Pass the number of songs in the album
-                        album.getLength(),                // Pass the album's length
-                        album.getCoverPhotoPath()         // Pass the path to the album cover photo
+                        album.getAlbumName(),
+                        album.getReleaseYear(),
+                        album.getListeners(),
+                        album.getSongs(),
+                        album.getLength(),
+                        album.getCoverPhotoPath()
                 );
 
                 artistCard.setName(album.getAlbumName());
 
                 artistCard.addMouseListener(new CardMouseListener(artistCard, this, "album", artist, album));
 
-                cardPanel.add(artistCard);            // Add the card to the card panel
+                artistCard.setPreferredSize(new Dimension(840, 100));
+
+                cardPanel.add(artistCard);
             }
         }
 
@@ -214,22 +217,35 @@ public class AlbumsFrame extends JFrame implements ActionListener {
 
     public void refreshAlbumCards() {
         SwingUtilities.invokeLater(() -> {
-            cardPanel.removeAll(); // Mevcut tüm kartları kaldır
-            for (Album album : albums) {  // Sıralanmış albüm listesinden her bir albüm için kart oluştur
+            cardPanel.removeAll();
+            for (Album album : albums) {
                 JPanel artistCard = createArtistCard(
-                        album.getAlbumName(),    // Albüm adı
-                        album.getReleaseYear(),  // Yayınlanma yılı
-                        album.getListeners(),    // Dinlenme sayısı
-                        album.getSongs(),        // Şarkı sayısı
-                        album.getLength(),       // Albüm uzunluğu
-                        album.getCoverPhotoPath()// Kapak fotoğrafı yolu
+                        album.getAlbumName(),
+                        album.getReleaseYear(),
+                        album.getListeners(),
+                        album.getSongs(),
+                        album.getLength(),
+                        album.getCoverPhotoPath()
                 );
 
-                cardPanel.add(artistCard); // Yeni kartı panele ekle
+                artistCard.addMouseListener(new CardMouseListener(artistCard, this, "album", findArtistForAlbum(album), album));
+
+                artistCard.setPreferredSize(new Dimension(840, 100));
+
+                cardPanel.add(artistCard);
             }
-            cardPanel.revalidate();  // Paneli yeniden düzenle
-            cardPanel.repaint();     // Paneli yeniden çizdir
+            cardPanel.revalidate();
+            cardPanel.repaint();
         });
+    }
+
+    private Artist findArtistForAlbum(Album album) {
+        for (Artist artist : artists) {
+            if (artist.getAlbums().contains(album)) {
+                return artist;
+            }
+        }
+        return null;
     }
 
 }

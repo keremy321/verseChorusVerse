@@ -151,7 +151,7 @@ public class ArtistsFrame extends JFrame implements ActionListener {
         listenersLabel.setForeground(Color.WHITE);
         JLabel songsLabel = new JLabel(songs + " Songs");
         songsLabel.setForeground(Color.WHITE);
-        JLabel foundedLabel = new JLabel("Founded in " + year);
+        JLabel foundedLabel = new JLabel("Formed in " + year);
         foundedLabel.setForeground(Color.WHITE);
 
         panel.add(photoLabel);

@@ -108,6 +108,8 @@ public class ArtistFrame extends JFrame {
 
             artistCard.addMouseListener(new CardMouseListener(artistCard, this, "album", artist, album));
 
+            artistCard.setPreferredSize(new Dimension(840, 100));
+
             cardPanel.add(artistCard);
         }
 

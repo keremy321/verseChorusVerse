@@ -77,9 +77,12 @@ public class SongsFrame extends JFrame implements ActionListener {
             for (Album album : artist.getAlbums()) {
                 for (Song song : album.getSong()) {
                     String name = song.getSongName();
-                    JPanel artistCard = createArtistCard("a", song.getListeners(), song.getLength(), song.getReleaseYear(), song.getCoverPhotoPath());
+                    JPanel artistCard = createArtistCard(name, song.getListeners(), song.getLength(), song.getReleaseYear(), song.getCoverPhotoPath());
 
                     artistCard.setName(song.getSongName());
+
+                    artistCard.setPreferredSize(new Dimension(840, 100));
+
 
                     artistCard.addMouseListener(new CardMouseListener(artistCard, this, "song", artist, album, song));
 
@@ -123,7 +126,7 @@ public class SongsFrame extends JFrame implements ActionListener {
 
     private JPanel createArtistCard(String artistName, int listeners, int lenght, int year, String photoPath) {
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 5, 10, 10));
+        panel.setLayout(new GridLayout(1, 4, 10, 10));
         panel.setBackground(new Color(0, 0, 0, 0));
         panel.setOpaque(false);
 
@@ -144,7 +147,7 @@ public class SongsFrame extends JFrame implements ActionListener {
             photoLabel.setHorizontalAlignment(JLabel.CENTER);
         }
 
-        JLabel nameLabel = new JLabel(artistName);
+        JLabel nameLabel = new JLabel("<html>" + artistName + "</html>");
         nameLabel.setFont(new Font("Roboto Black", Font.BOLD, 20));
         nameLabel.setForeground(Color.WHITE);
         JLabel listenersLabel = new JLabel(listeners + " plays");
@@ -158,9 +161,6 @@ public class SongsFrame extends JFrame implements ActionListener {
         panel.add(nameLabel);
         panel.add(listenersLabel);
         panel.add(lenghtLabel);
-        panel.add(yearLabel);
-
-//        panel.addMouseListener(new CardMouseListener(panel, this, "song"));
 
         return panel;
     }
@@ -208,8 +208,14 @@ public class SongsFrame extends JFrame implements ActionListener {
 
             for (Song song : songs) {
                 String name = song.getSongName();
-                JPanel artistCard = createArtistCard("a", song.getListeners(), song.getLength(), song.getReleaseYear(), song.getCoverPhotoPath());
+                JPanel artistCard = createArtistCard(name, song.getListeners(), song.getLength(), song.getReleaseYear(), song.getCoverPhotoPath());
                 artistCard.setName(song.getSongName());
+
+                artistCard.setPreferredSize(new Dimension(840, 100));
+
+
+                artistCard.addMouseListener(new CardMouseListener(artistCard, this, "song", findArtistForSong(song), findAlbumForSong(song, findArtistForSong(song)), song));
+
                 cardPanel.add(artistCard);
             }
 
@@ -217,6 +223,30 @@ public class SongsFrame extends JFrame implements ActionListener {
             cardPanel.repaint();
         });
     }
+
+    private Artist findArtistForSong(Song song) {
+        for (Artist artist : artists) {
+            for (Album album : artist.getAlbums()) {
+                if (album.getSong().contains(song)) {
+                    return artist;
+                }
+            }
+        }
+        return null; // Return null if not found
+    }
+
+    // Helper method to find the album for a given song
+    private Album findAlbumForSong(Song song, Artist artist) {
+        if (artist != null) {
+            for (Album album : artist.getAlbums()) {
+                if (album.getSong().contains(song)) {
+                    return album;
+                }
+            }
+        }
+        return null; // Return null if not found
+    }
+
 
 }
 

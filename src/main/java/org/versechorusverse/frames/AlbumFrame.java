@@ -109,6 +109,8 @@ public class AlbumFrame extends JFrame implements ActionListener {
 
             artistCard.addMouseListener(new CardMouseListener(artistCard, this, "song", artist, album, song));
 
+            artistCard.setPreferredSize(new Dimension(840, 100));
+
             cardPanel.add(artistCard);            // Add the card to the card panel
 
         }
