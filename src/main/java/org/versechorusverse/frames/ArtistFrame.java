@@ -1,5 +1,6 @@
 package org.versechorusverse.frames;
 
+import org.versechorusverse.datas.DataCreate;
 import org.versechorusverse.guiCustomizations.*;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 
 public class ArtistFrame extends JFrame implements ActionListener {
+    DataCreate dataCreate = new DataCreate();
 
     private JComboBox comboBoxChartType;
     JLabel sort;
@@ -91,8 +93,8 @@ public class ArtistFrame extends JFrame implements ActionListener {
         cardPanel.setLayout(new GridLayout(0, 1, 10, 0));
         cardPanel.setOpaque(false);
 
-        for (int i = 1; i <= 10; i++) {
-            JPanel artistCard = createArtistCard("ALBUM " + i, i + 2000 ,i * 1000, i * 10, i+40 ,"/photo/photo" + i + ".jpg"); // Update the path for each artist photo
+        for (int i = 0; i <= 5; i++) {
+            JPanel artistCard = createArtistCard(dataCreate.artists.get(i).getAlbums().get(i).getAlbumName(), i + 2000 ,i * 1000, i * 10, i+40 ,"/photo/photo" + i + ".jpg"); // Update the path for each artist photo
             cardPanel.add(artistCard);
         }
 

@@ -1,8 +1,7 @@
 package org.versechorusverse.frames;
 
-import org.versechorusverse.data.ArtistData;
+import org.versechorusverse.datas.DataCreate;
 import org.versechorusverse.guiCustomizations.*;
-import org.versechorusverse.sort.SelectionSort;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -12,13 +11,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class ArtistsFrame extends JFrame implements ActionListener {
-
-    private List<ArtistData> artistDataList = new ArrayList<>();
+    DataCreate dataCreate = new DataCreate();
     JPanel cardPanel;
 
 
@@ -74,11 +70,9 @@ public class ArtistsFrame extends JFrame implements ActionListener {
         cardPanel.setOpaque(false);
 
         // Add sample artist cards with photos
-        for (int i = 1; i <= 10; i++) {
-            JPanel artistCard = createArtistCard("ARTIST " + i, i * 1000, i * 10, i + 1990, "/photo/photo" + i + ".jpg");
+        for (int i = 0; i < 5; i++) {
+            JPanel artistCard = createArtistCard(dataCreate.artists.get(i).getArtistName(), dataCreate.artists.get(i).getListeners(), dataCreate.artists.get(i).getSongs(), dataCreate.artists.get(i).getYear(), "/photo/photo" + i + ".jpg");
             cardPanel.add(artistCard);
-            // Add artist data to the list for sorting purposes
-            artistDataList.add(new ArtistData(i,"ARTIST " + i, i * 1000, i * 10, i + 1990, "/photo/photo" + i + ".jpg")); // Assume ArtistData has a constructor for these parameters
         }
 
 
@@ -174,46 +168,33 @@ public class ArtistsFrame extends JFrame implements ActionListener {
         }
     }
 
-    private void refreshArtistCards() {
-        cardPanel.removeAll(); // Clear the panel
-
-        // Re-add sorted artist cards
-        for (ArtistData artist : artistDataList) {
-            JPanel artistCard = createArtistCard(artist.getArtistName(), artist.getListeners(), artist.getSongCount(), artist.getYear(), "/photo/photo" + artist.getId() + ".jpg");
-            cardPanel.add(artistCard);
-        }
-
-        cardPanel.revalidate(); // Refresh the panel to show the new sorted cards
-        cardPanel.repaint();
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == comboBoxChartType) {
             String selectedOption = (String) comboBoxChartType.getSelectedItem();
             boolean descending = selectedOption.contains("Greatest to Least") || selectedOption.contains("Newest to Oldest");
 
-            switch (selectedOption) {
-                case "(Popularity) Least to Greatest":
-                case "(Popularity) Greatest to Least":
-                    SelectionSort.sortArtistsByListeners(artistDataList, descending);
-                    refreshArtistCards();
-                    break;
-
-                case "(Year) Oldest to Newest":
-                case "(Year) Newest to Oldest":
-//                    SelectionSort.sortArtistsByYear(artistDataList, descending);
-                    break;
-
-                case "(Length) Least to Greatest":
-                case "(Length) Greatest to Least":
-                    SelectionSort.sortArtistsBySongCount(artistDataList, descending);
-                    refreshArtistCards();
-                    break;
-
-                default:
-                    break;
-            }
+//            switch (selectedOption) {
+//                case "(Popularity) Least to Greatest":
+//                case "(Popularity) Greatest to Least":
+//                    SelectionSort.sortArtistsByListeners(artistDataList, descending);
+//                    refreshArtistCards();
+//                    break;
+//
+//                case "(Year) Oldest to Newest":
+//                case "(Year) Newest to Oldest":
+////                    SelectionSort.sortArtistsByYear(artistDataList, descending);
+//                    break;
+//
+//                case "(Length) Least to Greatest":
+//                case "(Length) Greatest to Least":
+//                    SelectionSort.sortArtistsBySongCount(artistDataList, descending);
+//                    refreshArtistCards();
+//                    break;
+//
+//                default:
+//                    break;
+//            }
 
             // Refresh the artist cards with sorted data
 
